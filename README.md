@@ -8,4 +8,4 @@
 ## Courses
 
 - Texas A&M University:[MATH221](math221)
-- Shanghaitech:[SI231b](SI231b)
+- Shanghaitech:[SI231b](SI231b/Lectures)
