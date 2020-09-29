@@ -2,7 +2,8 @@
 
 ## Books
 
-- _Computational Photography: Methods and Applications_
+- _Matrix Analysis Carl Meyer_
+- _Matrix Computations Gene H. Golub, Charles F. Van Loan_
 
 ## Courses
 
