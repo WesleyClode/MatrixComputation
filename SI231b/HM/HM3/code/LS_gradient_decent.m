@@ -19,20 +19,12 @@ grad_x = zeros(var_len,1);
 count = 0;
 
 for step = 1:1000000
-    
     count = count + 1;
-    
     grad_x = alpha * A'*(A*x-Y);
-        
     x = x - alpha * grad_x;
-    
-    J_new = (A*x-Y)'*(A*x-Y)/2
-    
-    
+    J_new = (A*x-Y)'*(A*x-Y)/2;
     if abs(J_new - J)<eps
-        
         break
-        
     else
         J = J_new;
     end
