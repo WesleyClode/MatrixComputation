@@ -29,10 +29,10 @@ theta = zeros(var, 1);
 [theta_grad, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
 
 % Plot the convergence graph
-% figure;
-% plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
-% xlabel('Number of iterations');
-% ylabel('Cost J');
+figure;
+plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
+xlabel('Number of iterations');
+ylabel('Cost J');
 
 % Display gradient descent's result
 fprintf('Theta computed from gradient descent: \n');
