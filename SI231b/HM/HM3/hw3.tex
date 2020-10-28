@@ -70,10 +70,10 @@
 	\textbf{\LARGE{SI231 - Matrix Computations, Fall 2020-21}}\\
 	{\Large Homework Set \#3}\\
 	\texttt{Prof. Yue Qiu and Prof. Ziping Zhao}\\
-	\texttt{\textbf{Name:}}   	\texttt{ aaa }  		\hspace{1bp}
+	\texttt{\textbf{Name:}}   	\texttt{ Tian Yun }  		\hspace{1bp}
 	\texttt{\textbf{Major:}}  	\texttt{ Master in CS } 	\\
-	\texttt{\textbf{Student No.:}} 	\texttt{ 2018123456}     \hspace{1bp}
-	\texttt{\textbf{E-mail:}} 	\texttt{ aaa@shanghaitech.edu.cn}
+	\texttt{\textbf{Student No.:}} 	\texttt{ 2019232102}     \hspace{1bp}
+	\texttt{\textbf{E-mail:}} 	\texttt{ tianyun@shanghaitech.edu.cn}
 \par\end{center}
 
 
@@ -114,7 +114,60 @@ Suppose that $\Pb\in \Rbb^{n\times n}$ is a projector onto a subspace $\mathcal{
 
 \noindent
 \textbf{Solution.}
-Please insert your solution here ...
+\begin{enumerate}
+	\item $\textbf{proof}$:
+	A projection on a vector space $V$ is a linear operator $P: V \mapsto V$ such that $P^{2}=P$.$\quad P \in R^{n \times m}$
+	
+	$\therefore P(I-P) = 0$, and $rank(P(I-P))) = 0$. 
+	
+	$\therefore rank(P) + rank(I-p) - n \leq 0$
+	
+	$\therefore rank(P) + rank(I-p)  \leq n$
+	
+	First case : $rank(p) = n$, $\quad \therefore rank(I-p) = 0, \therefore I=p$
+	
+	Second case: $rank(p) \leq n$, $\quad \therefore$ p must be singular.
+	
+	\item $\textbf{I} -\Pb$.
+	
+	$\Pb\in \Rbb^{n\times n}$ is a projector onto a subspace $\mathcal{U}$ along its orthogonal complement $\mathcal{U}^{\perp}$
+	
+	so for all $x \in \mathcal{U}$,  $\Pb x = x$, for all $x \in \mathcal{U}^{\perp}$, $\Pb x = 0$
+	
+	Now we want to find the orthogonal projector $\Pb^*$ onto $\mathcal{U}^{\perp}$ along the subspace $\mathcal{U}$
+	
+	it means for all $y \in \mathcal{U^{\perp}}$,  $\Pb^* y = y$, for all $y \in \mathcal{U}$, $\Pb^* y = 0$
+	
+	$\Pb^* = \textbf{I} -\Pb$.
+	
+	because for all $x \in \mathcal{U}^{\perp}$ , $(\textbf{I} -\Pb)x = x$ and for all $x \in \mathcal{U}$ , $(\textbf{I} -\Pb)x = 0$, satisfied with the  analysis above.
+	
+	\item $\textbf{proof}$: 
+	
+	
+	On the one hand, $\forall x_u \in \mathcal{U} , \exists x \in \mathcal{V}$ s.t. $ x_{u} = \Pb_{\Ucal} x \quad \forall x_w \in \mathcal{W} ,\exists y \in \mathcal{V}$ s.t. $ y_{w} =\Pb_{\Wcal}  y$  . 
+	
+	if $\Pb_{\Ucal} \Pb_{\Wcal}  = 0$ , and $\Pb_{\Ucal}  x_{u} = 0$ , $\Pb_{\Wcal}  y_{w} = 0$ so $x_{u}^T \Pb_{\Ucal}^T \Pb_{\Wcal} x_{w}= 0$
+		
+	So for any $z_u \in \Ucal$  and because for any $z_w \in \Wcal \quad z_u^T  \perp z_w$
+	
+	$\therefore \Ucal \perp \Wcal$
+	
+	On the other hand, if $\Ucal \perp \Wcal$   So for any $z_u \in \Ucal$  and for any $z_w \in \Wcal \quad z_u^T z_w = 0$
+	
+	so for any $z_{u} \in \mathcal{U}$, we can find a vector $x \in V$ s.t. $\Pb_{\Ucal} x = z_u$ 
+	
+	and for any $z_{v} \in \mathcal{V}$ we can find a vector $y \in V$ s.t. $\Pb_{\Wcal} y = z_w$ 
+	
+	$\because z_u^T z_w = 0$, therefore $(\Pb_{\Ucal} x)^T \Pb_{\Wcal} y = 0$
+	
+	So $x^T \Pb_{\Ucal}^T \Pb_{\Wcal} y = 0$ 
+	
+	$\therefore \Pb_{\Ucal}^T \Pb_{\Wcal} = 0$ 
+
+
+%	because $\Ucal$ and $\Wcal$  are the subspace of $\Vcal$,so $z = x_{u} + y_{w} \in \Vcal$ 
+\end{enumerate}
 
 \newpage
 \section{Least Square (LS) programming.}
@@ -153,9 +206,36 @@ where $\mathbf{A} \in \Rbb^{m \times n}$ is a matrix representing the predefined
    \end{itemize}
 \noindent
 \textbf{Solution.}
-Please insert your solution here ...
 
+1).The first part you can check in my uploaded  file.
 
+2). (1).Gradient descent method:
+
+The stop condition used here is that the change value of cost is less than 1e-6, and a total of 85 iterations are performed.
+
+Each iteration needs to be calculated:
+
+1. $X*theta$
+
+2. $X' * (predictions - y)$
+
+3. $theta = theta - alpha * updates$
+
+Assuming that C iterations are required to complete, the time complexity of each iteration is $O(n*k+k)$, so the total time complexity is $O(C(n*k+k))$ flops
+
+(2). Normal Equations:
+
+1. $L = chol(X' * X);$
+
+2. $temp = forwardsub(L',X'*y);$
+
+3. $theta = backwardsub(L,temp);$
+
+chol: A total of $O\left(n^{2}\right)$ elements are calculated, and the calculation of each element contains the multiplication of $O(n)$, so it is $O\left(n^{ 3}\right)$
+
+ For forward substitution and backward substitution algorithms, since L or L'is a triangular matrix, the first one can be calculated in the order of $y_{1}, y_{2}, \cdots$, the required calculation The complexity is $O\left(n^{2}\right),$ Similarly, the third one can also be calculated like this.
+
+So the total computational complexity is $O\left(n^{3}+n^{2}\right)=O\left(n^{3}\right)$ flops .The advantage of this algorithm is that when it is necessary to solve different x with relatively different b for the same A, the new part can be completed with $O\left(n^{2}\right)$ complexity.
 \newpage
 \section{Understanding the QR Factorization}
 \noindent\textbf{Problem 3 [Understanding the Gram-Schmidt algorithm.]}. \textcolor{blue}{(5 points + 7 points + 6 points + 7 points)}
@@ -230,7 +310,36 @@ Please insert your solution here ...
 
 \noindent
 \textbf{Solution.}
-Please insert your solution here ...
+\begin{enumerate}
+	\item 
+	$\tilde{q}_{1}=a_{1}=\left[\begin{array}{llll}1 & 2 & 3 & 4\end{array}\right]^{T}$.
+	
+	$\mathbf{q}_{1}=\tilde{\mathbf{q}}_{1} /\left\|\tilde{\mathbf{q}}_{1}\right\|_{2}=\frac{1}{\sqrt{30}}\left[\begin{array}{llll}1 & 2 & 3 & 4\end{array}\right]^{T}$
+	
+	$\tilde{\mathbf{q}}_{2}=\mathbf{a}_{2}-\left(\mathbf{q}_{1}^{T} \mathbf{a}_{2}\right) \mathbf{q}_{1}=\left[\begin{array}{llll}2 & 3 & 4 & 5\end{array}\right]^{T}-\frac{1}{3}\left[\begin{array}{llll}4 & 8 & 12 & 16\end{array}\right]^{T}=\frac{1}{3}\left[\begin{array}{llll}2 & 1 & 0 & -1\end{array}\right]^{T}$
+	
+	$\mathbf{q}_{2}=\tilde{\mathbf{q}}_{2} /\left\|\tilde{\mathbf{q}}_{2}\right\|_{2}=\frac{1}{\sqrt{6}}\left[\begin{array}{llll}2 & 1 & 0 & -1\end{array}\right]^{T}$
+	
+	$\tilde{\mathrm{q}}_{3}=\mathrm{a}_{3}-\left(\mathbf{q}_{1}^{T} \mathbf{a}_{3}\right) \mathbf{q}_{1}-\left(\mathbf{q}_{2}^{T} \mathbf{a}_{3}\right) \mathbf{q}_{2}=0,$ So $\left(\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}, \mathbf{a}_{4}\right)$ are not linearly independent. We can get the set
+	of orthonormal basis from 
+	
+	$a_{1}, a_{2}, a_{4}$
+	
+	$\tilde{\mathbf{q}}_{3}=\mathbf{a}_{4}-\left(\mathbf{q}_{1}^{T} \mathbf{a}_{4}\right) \mathbf{q}_{1}-\left(\mathbf{q}_{2}^{T} \mathbf{a}_{4}\right) \mathbf{q}_{2}=\frac{1}{5}\left[\begin{array}{llll}2 & -1 & -4\end{array}\right]^{T}$
+	
+	$\mathbf{q}_{3}=\tilde{\mathbf{q}}_{3} /\left\|\tilde{\mathbf{q}}_{3}\right\|_{2}=\frac{1}{\sqrt{30}}\left[\begin{array}{llll}2 & -1 & -4 & 3\end{array}\right]^{T}$
+	
+	$\mathrm{q}_{1}^{T} * \mathrm{q}_{2}=\frac{1}{6 \sqrt{5}} *(2+2+0-4)=0$
+	
+	$\mathbf{q}_{1}^{T} * \mathbf{q}_{3}=\frac{1}{30} *(2-2-12+12)=0$
+	
+	$\mathbf{q}_{2}^{T} * \mathbf{q}_{3}=\frac{1}{6 \sqrt{5}} *(4-1+0-3)=0$
+	\item In the context of projection of vector:
+	
+	$\tilde{\mathbf{q}}_{i}=\mathbf{a}_{i}-\sum_{j=1}^{i-1} \operatorname{proj}_{\mathbf{q}}\left(\mathbf{a}_{i}\right)$
+	
+	In the context of projection onto subspace:
+\end{enumerate} 
 
 
 
@@ -299,7 +408,125 @@ Do not use decimals in your answers, fraction and $n$-th roots of numbers are ac
 
 \noindent
 \textbf{Solution.}
-Please insert your solution here ...
+\begin{enumerate}
+	\item 1)  $\mathbf{A}=\left[\begin{array}{lll}a_{1} & a_{2} & a_{3}\end{array}\right],$ we have
+	
+	$q_{1}=\frac{a_{1}}{\left\|a_{1}\right\|}=\frac{\sqrt{30}}{30}
+	\left[\begin{array}{llll}
+		1 & 2 & 3 & 4
+	\end{array}\right]^{T}$
+
+$
+\bar{q}_{2}=a_{2}-\left(q_{1}^{T} a_{2}\right) q_{1}=\frac{1}{3}
+\left[\begin{array}{cccc}
+	2 & 1 & 0 & -1
+\end{array}\right]^{T} \quad q_{2}=\frac{\bar{q}_{2}}{\left\|\vec{q}_{2}\right\|}=\frac{\sqrt{6}}{6}
+\left[\begin{array}{cccc}
+	2 & 1 & 0 & -1
+\end{array}\right]^{T}
+$
+
+$\bar{q}_{3}=a_{3}-\left(q_{1}^{T} a_{3}\right) q_{1}-\left(q_{2}^{T} a_{3}\right) q_{1}=\frac{1}{5}\left[\begin{array}{cccc}2 & -1 & -4 & 3\end{array}\right]^{T} \quad q_{3}=\frac{\bar{q}_{3}}{\left\|\bar{q}_{3}\right\|}=\frac{\sqrt{30}}{30}\left[\begin{array}{cccc}2 & -1 & -4 & 3\end{array}\right]^{T}$
+
+$r_{11}=\left\|\overline{a_{1}}\right\|=\frac{\sqrt{30}}{30}$
+
+$ r_{22}=\left\|\overline{q_{2}}\right\|=\frac{\sqrt{6}}{3} $
+
+$r_{33}=\left\|\overline{q_{3}}\right\|=\frac{\sqrt{30}}{5}$
+
+$r_{12}=q_{1}^{T} a_{2}=\sqrt{30} $
+
+$ r_{13}=q_{1}^{T} a_{3}=\frac{13 \sqrt{30}}{5}$
+
+$ r_{23}=q_{2}^{T} a_{3}=0$
+
+$$
+\mathbf{Q}=\left[\begin{array}{ccc}
+	\frac{\sqrt{30}}{30} & \frac{2 \sqrt{6}}{6} & \frac{2 \sqrt{30}}{300} \\
+	\frac{2 \sqrt{30}}{30} & \frac{\sqrt{6}}{6} & \frac{-\sqrt{30}}{30} \\
+	\frac{3 \sqrt{30}}{30} & 0 & -\frac{4 \sqrt{30}}{30} \\
+	\frac{4 \sqrt{30}}{30} & -\frac{\sqrt{6}}{6} & \frac{3 \sqrt{30}}{30}
+\end{array}\right]
+$$
+$$
+\mathbf{R}=\left[\begin{array}{ccc}
+	\frac{\sqrt{30}}{30} & \frac{4\sqrt{30}}{3} & \frac{1.3 \sqrt{30}}{5} \\
+	0 & \frac{\sqrt{6}}{3} & 0 \\
+	0 & 0 & \frac{\sqrt{30}}{5}
+\end{array}\right]
+$$
+
+
+	\item since $x+\delta x=\mathbf{A}^{\dagger}(b+\delta b)$ and $x=\mathbf{A}^{\dagger} b,$ we have $\delta x=\mathbf{A}^{\dagger} \delta b,$
+	
+	 so $\|\delta x\|=\left\|\mathbf{A}^{\dagger} \delta b\right\| \leq\left\|\mathbf{A}^{\dagger}\right\|\|\delta b\|$.
+	 
+	since $\mathbf{A} x=b,$ we have $\frac{1}{\|x\|} \leq \frac{\|b\|}{\|x\|},$ 
+	
+	so $\frac{\|\delta x\|}{\|x\|} \leq\|\mathbf{A}\|\left\|\mathbf{A}^{\dagger}\right\| \frac{\|\delta b\|}{\|\mathbf{b}\|} .$
+	
+	Similarly, $\mathbf{A}(x+\delta x)=b+\delta b,$ we have $\delta b=\mathbf{A},$ 
+	
+	so $\|\delta b\| \leq\|\mathbf{A}\|\|\delta x\| . x=\mathbf{A}^{\dagger} b,$ 
+	
+	we have
+	$\|x\| \leq\left\|\mathbf{A}^{\dagger}\right\|\|b\|, \operatorname{so} \frac{1}{\|\boldsymbol{\Lambda}\|\left\|\boldsymbol{A}^{\prime}\right\|} \frac{\|\delta \mathbf{b}\|}{\|\mathbf{b}\|} \leq \frac{\|\delta \mathbf{x}\| \|}{\|\mathbf{x}\|}$
+	
+	Above all
+	$$
+	\frac{1}{\|\mathbf{A}\|\left\|\mathbf{A}^{\dagger}\right\|} \frac{\|\delta \mathbf{b}\|}{\|\mathbf{b}\|} \leq \frac{\|\delta \mathbf{x}\|}{\|\mathbf{x}\|} \leq\|\mathbf{A}\|\left\|\mathbf{A}^{\dagger}\right\| \frac{\|\delta \mathbf{b}\|}{\|\mathbf{b}\|},
+	$$
+	
+	\item 
+	$$
+	\mathbf{A}^{T} \mathbf{A}=\left[\begin{array}{lll}
+		15 & 16 & 15 \\
+		16 & 18 & 17 \\
+		15 & 17 & 17
+	\end{array}\right] \quad \mathbf{A}^{T} \mathbf{b}=\left[\begin{array}{l}
+		19 \\
+		20 \\
+		14
+	\end{array}\right]
+	$$
+	Solve the cquation $A^{T} A x_{L s i}=A^{T} b$,we have
+	$$
+	\mathbf{x}_{L S}=\left[\begin{array}{c}
+		\frac{11}{13} \\
+		\frac{67}{13} \\
+		-\frac{66}{13}
+	\end{array}\right]
+	$$
+	\item
+	$$
+	\mathbf{A}^{T} \mathbf{A}=\left[\begin{array}{ccc}
+		4 & 10 & 30 \\
+		10 & 30 & 100 \\
+		30 & 100 & 357
+	\end{array}\right] \quad \mathbf{A}^{T} \mathbf{b}=\left[\begin{array}{c}
+		\frac{23}{2} \\
+		37 \\
+		130
+	\end{array}\right]
+	$$
+	Solve the equation $\mathbf{A}^{T} \mathbf{A} \mathbf{x}_{L, s}=\mathbf{A}^{T} \mathbf{b},$ we have
+	$$
+	\mathbf{x}_{L S}=\left[\begin{array}{c}
+		\frac{15}{8} \\
+		-\frac{59}{40} \\
+		\frac{5}{8}
+	\end{array}\right]
+	$$
+	\item
+	$$
+	\begin{array}{c}
+		\mathrm{A}^{\dagger}=\left(\mathrm{A}^{T} \mathrm{A}\right)^{-1} \mathrm{A}^{T} \\
+		\left\|\mathrm{A}_{1}\right\|_{2}=16.7 \mathrm{S} \quad\left\|\mathrm{A}_{1}^{\dagger}\right\|_{2}=5.297 \rightarrow\left\|\mathrm{A}_{1}\right\|_{2}\left\|\mathrm{A}_{1}^{\dagger}\right\|_{2}=88.895 \\
+		\left\|\mathrm{A}_{2}\right\|_{2}=19.621 \quad\left\|\mathrm{A}_{2}^{\dagger}\right\|_{2}=3.756 \rightarrow\left\|\mathrm{A}_{2}\right\|_{2}\left\|\mathrm{A}_{2}^{\dagger}\right\|_{2}=73.695
+	\end{array}
+	$$
+\end{enumerate}
+	
 
 
 
@@ -327,7 +554,238 @@ Consider the following underdetermined system ${\bf Ax}={\bf b}$ with ${\bf A}\i
 \end{enumerate}
 \noindent
 \textbf{Solution.}
-Please insert your solution here ...
+\begin{enumerate}
+	\item  \[
+	{\bf A^T}=
+	\begin{bmatrix}
+		1&0&2\\
+		2&-2&5\\
+		2&2&6\\
+		0&1&1
+	\end{bmatrix}\,
+	{\bf e_1}=
+	\begin{bmatrix}
+		1\\
+		0\\
+		0\\
+		0
+	\end{bmatrix}\,
+	{\bf u_1}=
+	\begin{bmatrix}
+		1\\
+		2\\
+		2\\
+		0
+	\end{bmatrix}\
+	-3
+	\begin{bmatrix}
+		1\\
+		0\\
+		0\\
+		0
+	\end{bmatrix}\
+	=
+	\begin{bmatrix}
+		-2\\
+		2\\
+		2\\
+		0
+	\end{bmatrix}\
+	P_1 = \textbf{I} - 2 \frac{u_1 u_1^T}{u_1^T u_1}
+	=\frac{1}{3}
+	\begin{bmatrix}
+		1&2&2&0\\
+		2&1&-2&0\\
+		2&-2&1&0\\
+		0&0&0&1
+	\end{bmatrix}\,
+	\]
+	
+	 \[
+	{P_1\bf A^T}=
+	\begin{bmatrix}
+		1&0&2\\
+		2&-2&5\\
+		2&2&6\\
+		0&1&1
+	\end{bmatrix}\,
+	{\bf e_2}=
+	\begin{bmatrix}
+		1\\
+		0\\
+		0
+	\end{bmatrix}\,
+	{\bf u_2}=
+	\begin{bmatrix}
+		-2\\
+		2\\
+		1
+	\end{bmatrix}\
+	-3
+	\begin{bmatrix}
+		1\\
+		0\\
+		0
+	\end{bmatrix}\
+	=
+	\begin{bmatrix}
+		-5\\
+		2\\
+		1
+	\end{bmatrix}\
+	P_2^* = \textbf{I} - 2 \frac{u_2 u_2^T}{u_2^T u_2}, \quad
+	P_2 = 
+	\begin{bmatrix}
+		1&0\\
+		0&P_2^*\\
+	\end{bmatrix}\
+	\]
+
+	 \[
+	{P_2 P_1\bf A^T}=
+	\begin{bmatrix}
+		3&0&8\\
+		0&3&1\\
+		0&0&\frac{4}{5}\\
+		0&0&\frac{3}{5}
+	\end{bmatrix}\,
+	{\bf e_2}=
+	\begin{bmatrix}
+		1\\
+		0
+	\end{bmatrix}\,
+	{\bf u_3}=
+	\begin{bmatrix}
+		-\frac{4}{5}\\
+		\frac{3}{5}
+	\end{bmatrix}\
+	-
+	\begin{bmatrix}
+		1\\
+		0
+	\end{bmatrix}\
+	=
+	\begin{bmatrix}
+		-\frac{9}{5}\\
+		\frac{3}{5}
+	\end{bmatrix}\
+	P_3^* = \textbf{I} - 2 \frac{u_3 u_3^T}{u_3^T u_3}, \quad
+	P_3 = 
+	\begin{bmatrix}
+		1&0&0\\
+		0&1&0\\
+		0&0&P_3^*\\
+	\end{bmatrix}\
+\]
+
+
+ \[
+{P_3 P_2 P_1\bf A^T}=
+\begin{bmatrix}
+	3&0&8\\
+	0&3&1\\
+	0&0&1\\
+	0&0&0
+\end{bmatrix},
+\A^T=P_1 P_2 P_3 \R= \Q\R=
+\begin{bmatrix}
+	\frac{1}{3}&\frac{2}{3}&\frac{2}{3}&0\\
+	0&-\frac{2}{3}&\frac{2}{3}&\frac{1}{3}\\
+	-\frac{2}{3}&\frac{1}{3}&0&\frac{2}{3}\\
+	\frac{2}{3}&0&-\frac{1}{3}&\frac{2}{3}
+\end{bmatrix} \times
+\begin{bmatrix}
+	3&0&8\\
+	0&3&1\\
+	0&0&1\\
+	0&0&0
+\end{bmatrix}\
+\]
+
+\item 
+Solving Underdetermined Systems by QR For $A \in R^{m x n}$ with $m<n$ and $\operatorname{rank}(A)=m,$ we have
+$$
+\mathbf{A}^{T}=\mathbf{Q R}=\left[\begin{array}{ll}
+	\mathbf{Q}_{1} & \mathbf{Q}_{2}
+\end{array}\right]\left[\begin{array}{c}
+	\mathbf{R}_{1} \\
+	\mathbf{0}
+\end{array}\right]=\mathbf{Q}_{1} \mathbf{R}_{1}+\mathbf{Q}_{2} \mathbf{0}
+$$
+$$
+\mathbf{A} \mathbf{x}=\mathbf{R}_{1}^{\top} \mathbf{Q}_{1}^{T} \mathbf{x}+\mathbf{0}^{T} \mathbf{Q}_{2}^{T} \mathbf{x}=\mathbf{b}
+$$
+which indicates
+$$
+\mathbf{Q}_{i}^{T} \mathbf{x}=\mathbf{R}_{1}^{-T} \mathbf{b}
+$$
+and $Q_{2}^{T} x$ can be anything I set it to be 0 
+$$
+\left[\begin{array}{l}
+	\mathbf{Q}_{1}^{\top} \mathbf{x} \\
+	\mathbf{Q}_{2}^{\top} \mathbf{x}
+\end{array}\right]=\mathbf{Q}^{T} \mathbf{x}=\left[\begin{array}{c}
+	\mathbf{R}_{1}^{-T} \mathbf{b} \\
+	\mathbf{0}
+\end{array}\right]
+$$
+
+
+hence, one possible solution is
+$$
+R_{1}^{-T} b = 
+\begin{bmatrix}
+	3&0&8\\
+	0&3&1\\
+	0&0&1
+\end{bmatrix}^{-1} b=
+\begin{bmatrix}
+	\frac{1}{3}b_1-\frac{8}{3}b_3\\
+	\frac{1}{3}b_2-\frac{1}{3}b_3\\
+	b_3\\
+	0
+\end{bmatrix}\
+$$
+
+$$
+x=
+Q\left[\begin{array}{c}
+	R_{1}^{-T} b \\
+	0
+\end{array}\right]=
+\begin{bmatrix}
+	\frac{1}{3}&\frac{2}{3}&\frac{2}{3}&0\\
+	0&-\frac{2}{3}&\frac{2}{3}&\frac{1}{3}\\
+	-\frac{2}{3}&\frac{1}{3}&0&\frac{2}{3}\\
+	\frac{2}{3}&0&-\frac{1}{3}&\frac{2}{3}
+\end{bmatrix} \times
+\begin{bmatrix}
+	\frac{1}{3}&0&-\frac{8}{3}&0\\
+	0&\frac{1}{3}&\frac{1}{3}&0\\
+	0&0&0&1\\
+	0&0&0&0
+\end{bmatrix}\
+\begin{bmatrix}
+	b_1\\
+	b_2\\
+	b_3\\
+	b_4
+\end{bmatrix}=
+\begin{bmatrix}
+	\frac{1}{9}&\frac{2}{9}&-\frac{2}{3}&\frac{2}{3}\\
+	0&-\frac{2}{9}&-\frac{2}{9}&\frac{2}{3}\\
+	-\frac{2}{9}&\frac{1}{9}&\frac{17}{9}&\frac{2}{3}\\
+	\frac{2}{9}&0&-\frac{16}{9}&-\frac{1}{3}
+\end{bmatrix}
+\begin{bmatrix}
+	b_1\\
+	b_2\\
+	b_3\\
+	b_4
+\end{bmatrix}\
+$$
+
+\end{enumerate}
 
 \newpage
 \section{Solving LS via Projection}

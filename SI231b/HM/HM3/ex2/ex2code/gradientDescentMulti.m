@@ -11,10 +11,14 @@ for iter = 1:num_iters
     predictions =  X * theta;
     updates = X' * (predictions - y);
     theta = theta - alpha * updates;
+    J = computeCostMulti(X, y, theta);
     % ============================================================  
     
-    if iter >
-    J_history(iter) = cost;
+    if iter > 2 && abs(J-J_history(iter-1))<1e-6
+        break
+    end
+    
+    J_history(iter) = J;
 end
 
 end
