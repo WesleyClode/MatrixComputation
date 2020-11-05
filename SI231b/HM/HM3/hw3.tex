@@ -207,11 +207,17 @@ where $\mathbf{A} \in \Rbb^{m \times n}$ is a matrix representing the predefined
 \noindent
 \textbf{Solution.}
 
-1).The first part you can check in my uploaded  file.
+1).You can check in my uploaded  file.
 
-2). (1).Gradient descent method:
+2).You can check in my uploaded  file.
 
-The stop condition used here is that the change value of cost is less than 1e-6, and a total of 85 iterations are performed.
+3). (a)
+
+n = 210 , m = 1000
+
+(1).Gradient descent method:
+
+The stop condition used here is that the change value of cost is less than 1e-6, and a total of k = 85 iterations are performed.
 
 Each iteration needs to be calculated:
 
@@ -221,7 +227,7 @@ Each iteration needs to be calculated:
 
 3. $theta = theta - alpha * updates$
 
-Assuming that C iterations are required to complete, the time complexity of each iteration is $O(n*k+k)$, so the total time complexity is $O(C(n*k+k))$ flops
+Assuming that C iterations are required to complete, the time complexity of each iteration is $f l o p_{i}=n^{2} m+n^{2}+m n+3 n$ 
 
 (2). Normal Equations:
 
@@ -236,6 +242,17 @@ chol: A total of $O\left(n^{2}\right)$ elements are calculated, and the calculat
  For forward substitution and backward substitution algorithms, since L or L'is a triangular matrix, the first one can be calculated in the order of $y_{1}, y_{2}, \cdots$, the required calculation The complexity is $O\left(n^{2}\right),$ Similarly, the third one can also be calculated like this.
 
 So the total computational complexity is $O\left(n^{3}+n^{2}\right)=O\left(n^{3}\right)$ flops .The advantage of this algorithm is that when it is necessary to solve different x with relatively different b for the same A, the new part can be completed with $O\left(n^{2}\right)$ complexity.
+
+(b)
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=0.35]{norm.png}
+\end{figure}
+
+theta\_grad is the result of gradient descent and theta\_norm is the result of norm equation.
+
+norm() fuction will calculate the L2 norm of the vector,and computeCostMulti() function will calculate the loss for $f(x)$
+
 \newpage
 \section{Understanding the QR Factorization}
 \noindent\textbf{Problem 3 [Understanding the Gram-Schmidt algorithm.]}. \textcolor{blue}{(5 points + 7 points + 6 points + 7 points)}
@@ -312,33 +329,235 @@ So the total computational complexity is $O\left(n^{3}+n^{2}\right)=O\left(n^{3}
 \textbf{Solution.}
 \begin{enumerate}
 	\item 
-	$\tilde{q}_{1}=a_{1}=\left[\begin{array}{llll}1 & 2 & 3 & 4\end{array}\right]^{T}$.
+	1) According to Algorithm
 	
-	$\mathbf{q}_{1}=\tilde{\mathbf{q}}_{1} /\left\|\tilde{\mathbf{q}}_{1}\right\|_{2}=\frac{1}{\sqrt{30}}\left[\begin{array}{llll}1 & 2 & 3 & 4\end{array}\right]^{T}$
-	
-	$\tilde{\mathbf{q}}_{2}=\mathbf{a}_{2}-\left(\mathbf{q}_{1}^{T} \mathbf{a}_{2}\right) \mathbf{q}_{1}=\left[\begin{array}{llll}2 & 3 & 4 & 5\end{array}\right]^{T}-\frac{1}{3}\left[\begin{array}{llll}4 & 8 & 12 & 16\end{array}\right]^{T}=\frac{1}{3}\left[\begin{array}{llll}2 & 1 & 0 & -1\end{array}\right]^{T}$
-	
-	$\mathbf{q}_{2}=\tilde{\mathbf{q}}_{2} /\left\|\tilde{\mathbf{q}}_{2}\right\|_{2}=\frac{1}{\sqrt{6}}\left[\begin{array}{llll}2 & 1 & 0 & -1\end{array}\right]^{T}$
-	
-	$\tilde{\mathrm{q}}_{3}=\mathrm{a}_{3}-\left(\mathbf{q}_{1}^{T} \mathbf{a}_{3}\right) \mathbf{q}_{1}-\left(\mathbf{q}_{2}^{T} \mathbf{a}_{3}\right) \mathbf{q}_{2}=0,$ So $\left(\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}, \mathbf{a}_{4}\right)$ are not linearly independent. We can get the set
+	$\tilde{\mathbf{q}}_{1}=\mathbf{a_{1}}=\left[\begin{array}{llll}1 & 2 & 3 & 4\end{array}\right]^{T}$.
+
+$\mathbf{q}_{1}=\tilde{\mathbf{q}}_{1} /\left\|\tilde{\mathbf{q}}_{1}\right\|_{2}=\frac{1}{\sqrt{30}}\left[\begin{array}{llll}1 & 2 & 3 & 4\end{array}\right]^{T}$
+
+$\tilde{\mathbf{q}}_{2}=\mathbf{a}_{2}-\left(\mathbf{q}_{1}^{T} \mathbf{a}_{2}\right) \mathbf{q}_{1}=\left[\begin{array}{llll}2 & 3 & 4 & 5\end{array}\right]^{T}-\frac{1}{3}\left[\begin{array}{llll}4 & 8 & 12 & 16\end{array}\right]^{T}=\frac{1}{3}\left[\begin{array}{llll}2 & 1 & 0 & -1\end{array}\right]^{T}$
+
+$\mathbf{q}_{2}=\tilde{\mathbf{q}}_{2} /\left\|\tilde{\mathbf{q}}_{2}\right\|_{2}=\frac{1}{\sqrt{6}}\left[\begin{array}{llll}2 & 1 & 0 & -1\end{array}\right]^{T}$
+	$$\tilde{\mathbf{q_{3}}}=\mathbf{a_{3}}-\left(\mathbf{q_{1}}^{T} \mathbf{a_{3}}\right) \mathbf{q_{1}}-\left(\mathbf{q_{2}}^{T} \mathbf{a_{3}}\right) \mathbf{q_{2}}=0,$$
+	So $\left(\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}, \mathbf{a}_{4}\right)$ are not linearly independent. We can get the set
 	of orthonormal basis from 
-	
 	$a_{1}, a_{2}, a_{4}$
+	$$
+	\tilde{\mathbf{q_{4}}}=\mathbf{a_{4}}-\left(\mathbf{q_{1}}^{T} \mathbf{a_{4}}\right) \mathbf{q_{1}}-\left(\mathbf{q_{2}}^{T} \mathbf{a_{4}}\right) \mathbf{q_{2}}=\frac{1}{5}\left[\begin{array}{ccccc}
+		2 & -1 & -4 & 3
+	\end{array}\right]^{T}, \quad \mathbf{q_{4}}=\frac{\bar{\mathbf{q}_{4}}}{\left\|\bar{\mathbf{q}}_{4}\right\|}=\frac{\sqrt{30}}{30}\left[\begin{array}{cccc}
+		2 & -1 & -4 & 3
+	\end{array}\right]^{T}
+	$$
+	We can get it easily that $\mathbf{q_{1}}^{T} \mathbf{q_{2}}=\mathbf{q_{1}}^{T} \mathbf{q_{4}}=\mathbf{q_{2}}^{T} \mathbf{q_{4}}=0,$ so set of the basis $\mathbf{q_{1}}, \mathbf{q_{2}}, \mathbf{q_{4}}$ is orthonormal basis.
 	
-	$\tilde{\mathbf{q}}_{3}=\mathbf{a}_{4}-\left(\mathbf{q}_{1}^{T} \mathbf{a}_{4}\right) \mathbf{q}_{1}-\left(\mathbf{q}_{2}^{T} \mathbf{a}_{4}\right) \mathbf{q}_{2}=\frac{1}{5}\left[\begin{array}{llll}2 & -1 & -4\end{array}\right]^{T}$
+$$
+\mathbf{Q}=\left[\begin{array}{ccc}
+	\frac{1}{\sqrt{30}} & \frac{2}{\sqrt{6}} & \frac{2}{\sqrt{30}} \\
+	\frac{2}{\sqrt{30}} & \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{30}} \\
+	\frac{3}{\sqrt{30}} & 0 & -\frac{4}{\sqrt{30}} \\
+	\frac{1}{\sqrt{30}} & -\frac{1}{\sqrt{6}} & \frac{3}{\sqrt{30}}
+\end{array}\right]
+$$
+
+we can verify the orthnormality of the basis via
+$$
+Q^{T} Q=I
+$$
+	\item 
 	
-	$\mathbf{q}_{3}=\tilde{\mathbf{q}}_{3} /\left\|\tilde{\mathbf{q}}_{3}\right\|_{2}=\frac{1}{\sqrt{30}}\left[\begin{array}{llll}2 & -1 & -4 & 3\end{array}\right]^{T}$
+	(1) projection of vector:
 	
-	$\mathrm{q}_{1}^{T} * \mathrm{q}_{2}=\frac{1}{6 \sqrt{5}} *(2+2+0-4)=0$
+	$\left(q_{1}^{T} a_{2}\right) q_{1}$ is the orthogonal projection of vector $a_{2}$ onto the vector $q_{1},$ so $\tilde{q}_{2}=a_{2}-\left(q_{1}^{T} a_{2}\right) q_{1}$ indicates a vector that $a_{2}$ eliminated $q_{1}$ direction. by parity of reasoning, 	$\tilde{\mathbf{q}}_{i}=\mathbf{a}_{i}-\sum_{j=1}^{i-1} \operatorname{proj}_{\mathbf{q}}\left(\mathbf{a}_{i}\right)$ indicates a
+	vector that $a_{i}$ eliminated $q_{1}, q_{2} \cdots q_{i-1}$ directions.
+
+	(2) projection onto subspace:
 	
-	$\mathbf{q}_{1}^{T} * \mathbf{q}_{3}=\frac{1}{30} *(2-2-12+12)=0$
+	$$
+	\mathbf{P}=\mathbf{U U}^{T}, \quad \mathbf{U}=\left|\mathbf{u}_{1}\right| \cdots\left|\mathbf{u}_{k}\right|
+	$$
+	Then we have
+	$$
+	\tilde{\mathbf{q}}_{k}=\left(\mathbf{I}-\mathbf{Q}_{k} \mathbf{Q}_{k}^{T}\right) \mathbf{a}_{k}
+	$$
+	where
+	$$
+	\mathbf{Q}_{k}=\left[\mathbf{q}_{1}|\cdots| \mathbf{q}_{k-1}\right]
+	$$
 	
-	$\mathbf{q}_{2}^{T} * \mathbf{q}_{3}=\frac{1}{6 \sqrt{5}} *(4-1+0-3)=0$
-	\item In the context of projection of vector:
+	First unit the vector $a_{1},$ get vector $q_{1},$ then we have a orthogonal projector matrix $\mathbf{P}_{1}=\mathbf{Q}_{1} \mathbf{Q}_{1}^{T}, \mathbf{Q}_{1}=\left[q_{1}\right]$
+	$\tilde{q}_{2}=a_{2}-\left(q_{1}^{T} a_{2}\right) q_{1}=a_{2}-\mathbf{Q}_{1} \mathbf{Q}_{1}^{T} a_{2}$ indicates a vector that $a_{2}$ eliminated $P_{1}$ direction. by parity of reasoning, $\tilde{\mathbf{q}}_{i}=\mathbf{a}_{i}-\sum_{j=1}^{i-1}\left(\mathbf{q}_{j}^{T} \mathbf{a}_{i}\right) \mathbf{q}_{j}=\mathbf{a}_{i}-\mathbf{Q}_{i} \mathbf{Q}_{i}^{T} \mathbf{A}_{i}$ indicates a vector that $a_{i}$ eliminated $\mathbf{P}_{i}$
+	direction. $\left(\mathbf{A}_{i}=\left[a_{1}, a_{2} \cdots a_{i}\right]\right)$, the obtained $\left\{\tilde{\mathbf{q}}_{1}, \ldots, \tilde{\mathbf{q}}_{n}\right\}$ are orthogonal and $\left\{\mathbf{q}_{1}, \ldots, \mathbf{q}_{n}\right\}$ are orthonomal.
 	
-	$\tilde{\mathbf{q}}_{i}=\mathbf{a}_{i}-\sum_{j=1}^{i-1} \operatorname{proj}_{\mathbf{q}}\left(\mathbf{a}_{i}\right)$
+
+	\item
+classical Gram-Schimidt
+$$
+\begin{array}{c}
+	\tilde{q}_{1}=a_{1}, \quad q_{1}=\frac{\tilde{q}_{1}}{\left\|\tilde{q}_{1}\right\|}=\left[\begin{array}{ccc}
+		1 & \epsilon & \epsilon
+	\end{array}\right]^{T} \\
+	\tilde{q}_{2}=a_{2}-\left(q_{1}^{T} a_{2}\right) q_{1}=\left[\begin{array}{ccc}
+		0 & 0 & -\epsilon
+	\end{array}\right]^{T}, \quad q_{2}=\frac{\tilde{q}_{2}}{\left\|\tilde{q}_{2}\right\|}=\left[\begin{array}{ccc}
+		0 & 0 & -1
+	\end{array}\right]^{T} \\
+	\tilde{q}_{3}=a_{3}-\left(q_{1}^{T} a_{3}\right) q_{1}-\left(q_{2}^{T} a_{3}\right) q_{2}=\left[\begin{array}{ccc}
+		0 & -\epsilon & -\epsilon
+	\end{array}\right]^{T}, \quad q_{3}=\frac{\tilde{q}_{3}}{\left\|\tilde{q}_{3}\right\|}=
+\left[\begin{array}{ccc}
+		0 & -\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2}
+	\end{array}\right]^{T}
+\end{array}
+$$
+
+modified Gram-Schimidt
+$$
+\tilde{q}_{1}=a_{1}, \quad q_{1}=\frac{\tilde{q}_{1}}{\left\|\tilde{q}_{1}\right\|}=\left[\begin{array}{lll}
+	1 & \epsilon & \epsilon
+\end{array}\right]^{T}
+$$
+$$
+\tilde{q}_{2}=a_{2}-\left(q_{1}^{T} a_{2}\right) q_{1}=\left[\begin{array}{ccc}
+	0 & 0 & -\epsilon
+\end{array}\right]^{T}, \quad q_{2}=\frac{\tilde{q}_{2}}{\left\|\tilde{q}_{2}\right\|}=\left[\begin{array}{ccc}
+	0 & 0 & -1
+\end{array}\right]^{T}
+$$
+$$
+\tilde{q}_{3}^{(1)}=a_{3}-\left(q_{1}^{T} a_{3}\right) q_{1}=\left[\begin{array}{ccc}
+	0 & -\epsilon & 0
+\end{array}\right]
+$$
+$$
+\tilde{q}_{3}^{(2)}=\tilde{q}_{3}^{(1)}-\left(q_{2}^{T} \tilde{q}_{3}^{(1)}\right) q_{2}=\left[\begin{array}{ccc}
+	0 & -\epsilon & 0
+\end{array}\right]
+$$
+$$
+\tilde{q}_{3}=\tilde{q}_{3}^{(2)}=\left[\begin{array}{ccc}
+	0 & -\epsilon & 0
+\end{array}\right]^{T}, \quad q_{3}=\frac{\tilde{q}_{3}}{\left\|\tilde{q}_{3}\right\|}=\left[\begin{array}{ccc}
+	0 & -1 & 0
+\end{array}\right]^{T}
+$$
+Therefore,classical Gram-Schmidt retums
+$$
+\mathbf{q}_{1}=\left[\begin{array}{l}
+	1 \\
+	\epsilon \\
+	\epsilon
+\end{array}\right], \quad \mathbf{q}_{2}=\left[\begin{array}{c}
+	0 \\
+	0 \\
+	-1
+\end{array}\right], \quad \mathbf{q}_{3}=\left[\begin{array}{c}
+	0 \\
+	-1 / \sqrt{2} \\
+	-1 / \sqrt{2}
+\end{array}\right]
+$$
+which is not a set of orthonomal basis since $q_{2}$ and $q_{3}$ are not orthogonal. And the modified Gram-Schmidt
+algorithm returns,
+$$
+\mathbf{q}_{1}=\left[\begin{array}{l}
+	1 \\
+	\epsilon \\
+	\epsilon
+\end{array}\right], \quad \mathbf{q}_{2}=\left[\begin{array}{c}
+	0 \\
+	0 \\
+	-1
+\end{array}\right], \quad \mathbf{q}_{3}=\left[\begin{array}{c}
+	0 \\
+	-1 \\
+	0
+\end{array}\right]
+$$
+
+The two sets of basis are different.The result of classical Gram-Schimidt, $q_{2}$ and $q_{3}$ are not orthogonal.However,
+the set of basis derived by modified Gram-Schimidt algorithm is the desired orthogonal basis.
+\item
+
+ For $ \epsilon=1 \mathrm{e}-4$
+$$
+\begin{aligned}
+ \mathrm{q}_{1}=\left[\begin{array}{l}
+		1 \\
+		0 \\
+		0
+	\end{array}\right] \text { (CGS and MGS), } \mathbf{q}_{2}=\left[\begin{array}{c}
+		0 \\
+		0 \\
+		-1
+	\end{array}\right] \text { (CGS and MGS), } \mathbf{q}_{3}=\left[\begin{array}{c}
+		0 \\
+		-1 \\
+		0
+	\end{array}\right] \text { (CGS and MGS). }\\
+\end{aligned}
+$$
+$$
+\|Q^{T} Q-I \|_{F}<1 e-7(C G S)
+$$
+$$
+\|Q^{T} Q-I \|_{F}<1 e-10(M G S)\|.
+$$
+
+ For $ \epsilon=1 \mathrm{e}-9$
+$$
+\mathbf{q}_{1}=\left[\begin{array}{l}
+	1 \\
+	0 \\
+	0
+\end{array}\right](\mathrm{CGS}), \mathbf{q}_{2}=\left[\begin{array}{l}
+	0 \\
+	0 \\
+	-1
+\end{array}\right](\mathrm{CGS}), \mathbf{q}_{3}=\frac{\sqrt{2}}{2}\left[\begin{array}{c}
+	0 \\
+	-1 \\
+	-1
+\end{array}\right] \text { (CGS). }
+$$
+$$
+\|\mathbf{Q}^{T} \mathbf{Q}-\mathbf{I} \|_{\mathrm{F}}=1(\mathrm{CGS})
+$$
+$$
+\mathbf{q}_{1}=\left[\begin{array}{l}
+	1 \\
+	0 \\
+	0
+\end{array}\right](\mathrm{MGS}), \mathbf{q}_{2}=\left[\begin{array}{c}
+	0 \\
+	0 \\
+	-1
+\end{array}\right] \text { (MGS), } \mathbf{q}_{3}=\left[\begin{array}{c}
+	0 \\
+	-1 \\
+	0
+\end{array}\right] \text { (MGS) }
+$$
+$$
+\left(\mathbf{Q}^{T} \mathbf{Q}-\mathbf{I} \|_{\mathbf{F}}<\mathbf{l e}-7(\mathbf{M G S})\right.
+$$
+	\begin{algorithm}[!hbp]
+	\label{alg:modified_gs}
+	\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+	\caption{Modified Gram-Schmidt algorithm}
+	\SetAlgoLined
+	\Input{A collection of linearly independent vectors ${\bf a}_1,\ldots, {\bf a}_n$.}
+	\textbf{Initilization: $\tilde{\mathbf{q}}_{1}=\mathbf{a}_{1}, \text{for} \quad  i = 1,...,n$}\\
+	\text{for} $i=1, \ldots, n$ do\\
+	\quad $\mathbf{q}_{i}=\tilde{\mathbf{q}}_{i} / \tilde{\mathbf{q}}_{i} \|_{2}$ \\
+	\quad	\quad	\text{for} $k=i+1, \ldots, n$ do\\
+    \quad   \quad \quad	$\tilde{\mathbf{q}}_{k}=\tilde{\mathbf{q}}_{k}-\left(\mathbf{q}_{i}^{T} \tilde{\mathbf{q}}_{k}\right) \mathbf{q}_{i}$\\
+\quad \quad		end \\
+			end\\
+	\Output{${\bf q}_1,\ldots, {\bf q}_n$}
 	
-	In the context of projection onto subspace:
+	
+\end{algorithm}
 \end{enumerate} 
 
 
@@ -420,13 +639,17 @@ $
 \bar{q}_{2}=a_{2}-\left(q_{1}^{T} a_{2}\right) q_{1}=\frac{1}{3}
 \left[\begin{array}{cccc}
 	2 & 1 & 0 & -1
-\end{array}\right]^{T} \quad q_{2}=\frac{\bar{q}_{2}}{\left\|\vec{q}_{2}\right\|}=\frac{\sqrt{6}}{6}
+\end{array}\right]^{T} $
+
+$ q_{2}=\frac{\bar{q}_{2}}{\left\|\vec{q}_{2}\right\|}=\frac{\sqrt{6}}{6}
 \left[\begin{array}{cccc}
 	2 & 1 & 0 & -1
 \end{array}\right]^{T}
 $
 
-$\bar{q}_{3}=a_{3}-\left(q_{1}^{T} a_{3}\right) q_{1}-\left(q_{2}^{T} a_{3}\right) q_{1}=\frac{1}{5}\left[\begin{array}{cccc}2 & -1 & -4 & 3\end{array}\right]^{T} \quad q_{3}=\frac{\bar{q}_{3}}{\left\|\bar{q}_{3}\right\|}=\frac{\sqrt{30}}{30}\left[\begin{array}{cccc}2 & -1 & -4 & 3\end{array}\right]^{T}$
+$\bar{q}_{3}=a_{3}-\left(q_{1}^{T} a_{3}\right) q_{1}-\left(q_{2}^{T} a_{3}\right) q_{1}=\frac{1}{5}\left[\begin{array}{cccc}2 & -1 & -4 & 3\end{array}\right]^{T} $
+
+$ q_{3}=\frac{\bar{q}_{3}}{\left\|\bar{q}_{3}\right\|}=\frac{\sqrt{30}}{30}\left[\begin{array}{cccc}2 & -1 & -4 & 3\end{array}\right]^{T}$
 
 $r_{11}=\left\|\overline{a_{1}}\right\|=\frac{\sqrt{30}}{30}$
 
@@ -456,6 +679,30 @@ $$
 \end{array}\right]
 $$
 
+$
+\mathbf{A x}=\mathbf{b} \rightarrow \mathbf{Q} \mathbf{R} \mathbf{x}=\mathbf{b} \rightarrow \mathbf{R} \mathbf{x}=\mathbf{Q}^{T} b
+$
+$$
+\left[\begin{array}{ccc}
+	\sqrt{30} & \frac{40}{\sqrt{30}} & \frac{78}{\sqrt{30}} \\
+	0 & \frac{2}{\sqrt{6}} & 0 \\
+	0 & 0 & \frac{6}{\sqrt{30}}
+\end{array}\right] \cdot \mathbf{x}_{L S}=\left[\begin{array}{cccc}
+	\frac{1}{\sqrt{30}} & \frac{2}{\sqrt{30}} & \frac{3}{\sqrt{30}} & \frac{4}{\sqrt{30}} \\
+	\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & 0 & -\frac{1}{\sqrt{6}} \\
+	\frac{2}{\sqrt{30}} & -\frac{1}{\sqrt{30}} & -\frac{4}{\sqrt{30}} & \frac{3}{\sqrt{30}}
+\end{array}\right] \cdot\left[\begin{array}{c}
+	1 \\
+	3 / 2 \\
+	3 \\
+	6
+\end{array}\right]=\left[\begin{array}{c}
+	\frac{37}{\sqrt{30}} \\
+	-\frac{5}{2 \sqrt{6}} \\
+	\frac{13}{2 \sqrt{30}}
+\end{array}\right]
+$$
+solve the equation, we have $\mathbf{x}_{L S}=\left[\begin{array}{c}\frac{1}{12} \\ -\frac{5}{4} \\ \frac{13}{12}\end{array}\right]$
 
 	\item since $x+\delta x=\mathbf{A}^{\dagger}(b+\delta b)$ and $x=\mathbf{A}^{\dagger} b,$ we have $\delta x=\mathbf{A}^{\dagger} \delta b,$
 	
@@ -477,6 +724,11 @@ $$
 	\frac{1}{\|\mathbf{A}\|\left\|\mathbf{A}^{\dagger}\right\|} \frac{\|\delta \mathbf{b}\|}{\|\mathbf{b}\|} \leq \frac{\|\delta \mathbf{x}\|}{\|\mathbf{x}\|} \leq\|\mathbf{A}\|\left\|\mathbf{A}^{\dagger}\right\| \frac{\|\delta \mathbf{b}\|}{\|\mathbf{b}\|},
 	$$
 	
+	interpretation:
+	
+	When we think about the relative error of $x,$ If $b$ changes, the sensitivity of the least square solution depends
+	on $\|\mathbf{A}\|\left\|\mathbf{A}^{\dagger}\right\|$ And if $\|\mathbf{A}\|\left\|\mathbf{A}^{\dagger}\right\|$ is large ,though $\mathrm{b}$ changes little, the error of $\mathrm{x}$ may change large.
+	
 	\item 
 	$$
 	\mathbf{A}^{T} \mathbf{A}=\left[\begin{array}{lll}
@@ -489,14 +741,52 @@ $$
 		14
 	\end{array}\right]
 	$$
-	Solve the cquation $A^{T} A x_{L s i}=A^{T} b$,we have
+	
 	$$
-	\mathbf{x}_{L S}=\left[\begin{array}{c}
-		\frac{11}{13} \\
-		\frac{67}{13} \\
-		-\frac{66}{13}
+	\mathbf{A}^{T}(\mathbf{b}+\delta \mathbf{b})=\left[\begin{array}{c}
+		\frac{191}{10} \\
+		\frac{101}{5} \\
+		\frac{71}{5}
 	\end{array}\right]
 	$$
+	
+	Solve the cquation $\mathbf{x}_{LS1}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T} \mathbf{b}$,we have
+	$$
+	\mathbf{x}_{Ls1}
+	=\left[\begin{array}{cccc}
+		-1 & 4 / 13 & 6 / 13 & 0 \\
+		1 & -4 / 13 & -6 / 13 & 1 \\
+		0 & 2 / 13 & 3 / 13 & -1
+	\end{array}\right] \cdot\left[\begin{array}{c}
+		1 \\
+		3 / 2 \\
+		3 \\
+		6
+	\end{array}\right]=\left[\begin{array}{c}
+		11 / 13 \\
+		67 / 13 \\
+		-66 / 13
+	\end{array}\right]
+	$$
+	
+	
+	Solve the cquation $\hat{\mathbf{x}}_{L S2}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T}(\mathbf{b}+\delta \mathbf{b})$,we have
+$$
+\hat{\mathbf{x}}_{\mathbf{L S2}}=\left[\begin{array}{cccc}
+	-1 & 4 / 13 & 6 / 13 & 0 \\
+	1 & -4 / 13 & -6 / 13 & 1 \\
+	0 & 2 / 13 & 3 / 13 & -1
+\end{array}\right] \cdot\left[\begin{array}{c}
+	11 / 10 \\
+	3 / 2 \\
+	3 \\
+	6
+\end{array}\right]=\left[\begin{array}{c}
+	97 / 130 \\
+	683 / 130 \\
+	-66 / 13
+\end{array}\right]
+$$
 	\item
 	$$
 	\mathbf{A}^{T} \mathbf{A}=\left[\begin{array}{ccc}
@@ -509,21 +799,58 @@ $$
 		130
 	\end{array}\right]
 	$$
-	Solve the equation $\mathbf{A}^{T} \mathbf{A} \mathbf{x}_{L, s}=\mathbf{A}^{T} \mathbf{b},$ we have
+	Solve the equation $\mathbf{x}_{LS1}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T} \mathbf{b}$ we have
 	$$
-	\mathbf{x}_{L S}=\left[\begin{array}{c}
-		\frac{15}{8} \\
-		-\frac{59}{40} \\
-		\frac{5}{8}
+	\mathbf{x}_{L S1}=\left[\begin{array}{cccc}
+		9 / 4 & -3 / 4 & -5 / 4 & 3 / 4 \\
+		-31 / 20 & 23 / 20 & 27 / 20 & -19 / 20 \\
+		1 / 4 & -1 / 4 & -1 / 4 & 1 / 4
+	\end{array}\right] \cdot\left[\begin{array}{c}
+		1 \\
+		3 / 2 \\
+		3 \\
+		6
+	\end{array}\right]=\left[\begin{array}{c}
+		15 / 8 \\
+		-59 / 40 \\
+		5 / 8
 	\end{array}\right]
 	$$
+	
+	Solve the cquation  $\hat{\mathbf{x}}_{L S2}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T}(\mathbf{b}+\delta \mathbf{b})$,we have
+	$$
+	\mathbf{x}_{Ls2}=\hat{\mathbf{x}}_{L S}=\left[\begin{array}{cccc}
+		9 / 4 & -3 / 4 & -5 / 4 & 3 / 4 \\
+		-31 / 20 & 23 / 20 & 27 / 20 & -19 / 20 \\
+		1 / 4 & -1 / 4 & -1 / 4 & 1 / 4
+	\end{array}\right] \cdot\left[\begin{array}{c}
+		11 / 10 \\
+		3 / 2 \\
+		3 \\
+		6
+	\end{array}\right]=\left[\begin{array}{c}
+		21 / 10 \\
+		-163 / 100 \\
+		13 / 20
+	\end{array}\right]
+	$$
+	
 	\item
 	$$
-	\begin{array}{c}
-		\mathrm{A}^{\dagger}=\left(\mathrm{A}^{T} \mathrm{A}\right)^{-1} \mathrm{A}^{T} \\
-		\left\|\mathrm{A}_{1}\right\|_{2}=16.7 \mathrm{S} \quad\left\|\mathrm{A}_{1}^{\dagger}\right\|_{2}=5.297 \rightarrow\left\|\mathrm{A}_{1}\right\|_{2}\left\|\mathrm{A}_{1}^{\dagger}\right\|_{2}=88.895 \\
-		\left\|\mathrm{A}_{2}\right\|_{2}=19.621 \quad\left\|\mathrm{A}_{2}^{\dagger}\right\|_{2}=3.756 \rightarrow\left\|\mathrm{A}_{2}\right\|_{2}\left\|\mathrm{A}_{2}^{\dagger}\right\|_{2}=73.695
-	\end{array}
+		\mathrm{A}^{\dagger}=\left(\mathrm{A}^{T} \mathrm{A}\right)^{-1} \mathrm{A}^{T}
+	$$
+	$$
+	k_{1}=\|\mathbf{A}\|\left\|\mathbf{A}^{\dagger}\right\|=\frac{5610}{421}
+	$$
+	$$
+	k_{2}=\|\mathbf{A}\|\left\|\mathbf{A}^{\dagger}\right\|=\frac{2653}{36} 
+	$$
+
+	$$
+	\frac{\left\|\hat{\mathbf{x}}_{L S}-\mathbf{x}_{LS}\right\|_{2}}{\left\|\mathbf{x}_{LS} \right\|_{2}}=\frac{125}{6438}
+	$$
+	$$
+\frac{\left\|\hat{\mathbf{x}}_{LS}-\mathbf{x}_{LS}\right\|_{2}}{\left\|\mathbf{x}_{L S}\right\|_{2}}=\frac{1231}{11065}
 	$$
 \end{enumerate}
 	
@@ -604,9 +931,9 @@ Consider the following underdetermined system ${\bf Ax}={\bf b}$ with ${\bf A}\i
 	 \[
 	{P_1\bf A^T}=
 	\begin{bmatrix}
-		1&0&2\\
-		2&-2&5\\
-		2&2&6\\
+		3&0&8\\
+		0&-2&-1\\
+		0&2&0\\
 		0&1&1
 	\end{bmatrix}\,
 	{\bf e_2}=
@@ -632,13 +959,21 @@ Consider the following underdetermined system ${\bf Ax}={\bf b}$ with ${\bf A}\i
 		-5\\
 		2\\
 		1
-	\end{bmatrix}\
-	P_2^* = \textbf{I} - 2 \frac{u_2 u_2^T}{u_2^T u_2}, \quad
+	\end{bmatrix}\]
+
+\[
+	P_2^* = \textbf{I} - 2 \frac{u_2 u_2^T}{u_2^T u_2}
+	=
+	\frac{1}{3}\left[\begin{array}{ccc}
+		2 & -2 & -1 \\
+		-2 & -1 & -2 \\
+		-1 & -2 & 2
+	\end{array}\right], \quad
 	P_2 = 
 	\begin{bmatrix}
 		1&0\\
 		0&P_2^*\\
-	\end{bmatrix}\
+	\end{bmatrix}
 	\]
 
 	 \[
@@ -668,7 +1003,9 @@ Consider the following underdetermined system ${\bf Ax}={\bf b}$ with ${\bf A}\i
 	\begin{bmatrix}
 		-\frac{9}{5}\\
 		\frac{3}{5}
-	\end{bmatrix}\
+	\end{bmatrix}\]
+
+\[
 	P_3^* = \textbf{I} - 2 \frac{u_3 u_3^T}{u_3^T u_3}, \quad
 	P_3 = 
 	\begin{bmatrix}
@@ -689,10 +1026,10 @@ Consider the following underdetermined system ${\bf Ax}={\bf b}$ with ${\bf A}\i
 \end{bmatrix},
 \A^T=P_1 P_2 P_3 \R= \Q\R=
 \begin{bmatrix}
-	\frac{1}{3}&\frac{2}{3}&\frac{2}{3}&0\\
-	0&-\frac{2}{3}&\frac{2}{3}&\frac{1}{3}\\
-	-\frac{2}{3}&\frac{1}{3}&0&\frac{2}{3}\\
-	\frac{2}{3}&0&-\frac{1}{3}&\frac{2}{3}
+	\frac{1}{3}&0&\frac{2}{3}&\frac{2}{3}\\
+	\frac{2}{3}&-\frac{2}{3}&\frac{1}{3}&0\\
+	\frac{2}{3}&\frac{2}{3}&0&-\frac{1}{3}\\
+	0&\frac{1}{3}&\frac{2}{3}&\frac{2}{3}
 \end{bmatrix} \times
 \begin{bmatrix}
 	3&0&8\\
@@ -717,7 +1054,7 @@ $$
 $$
 which indicates
 $$
-\mathbf{Q}_{i}^{T} \mathbf{x}=\mathbf{R}_{1}^{-T} \mathbf{b}
+\mathbf{Q}_{1}^{T} \mathbf{x}=\mathbf{R}_{1}^{-T} \mathbf{b}
 $$
 and $Q_{2}^{T} x$ can be anything I set it to be 0 
 $$
@@ -738,7 +1075,7 @@ R_{1}^{-T} b =
 	3&0&8\\
 	0&3&1\\
 	0&0&1
-\end{bmatrix}^{-1} b=
+\end{bmatrix}^{-1} x=
 \begin{bmatrix}
 	\frac{1}{3}b_1-\frac{8}{3}b_3\\
 	\frac{1}{3}b_2-\frac{1}{3}b_3\\
@@ -754,10 +1091,10 @@ Q\left[\begin{array}{c}
 	0
 \end{array}\right]=
 \begin{bmatrix}
-	\frac{1}{3}&\frac{2}{3}&\frac{2}{3}&0\\
-	0&-\frac{2}{3}&\frac{2}{3}&\frac{1}{3}\\
-	-\frac{2}{3}&\frac{1}{3}&0&\frac{2}{3}\\
-	\frac{2}{3}&0&-\frac{1}{3}&\frac{2}{3}
+	\frac{1}{3}&0&\frac{2}{3}&\frac{2}{3}\\
+	\frac{2}{3}&-\frac{2}{3}&\frac{1}{3}&0\\
+	\frac{2}{3}&\frac{2}{3}&0&-\frac{1}{3}\\
+	0&\frac{1}{3}&\frac{2}{3}&\frac{2}{3}
 \end{bmatrix} \times
 \begin{bmatrix}
 	\frac{1}{3}&0&-\frac{8}{3}&0\\
@@ -769,22 +1106,22 @@ Q\left[\begin{array}{c}
 	b_1\\
 	b_2\\
 	b_3\\
-	b_4
+	0
 \end{bmatrix}=
 \begin{bmatrix}
-	\frac{1}{9}&\frac{2}{9}&-\frac{2}{3}&\frac{2}{3}\\
-	0&-\frac{2}{9}&-\frac{2}{9}&\frac{2}{3}\\
-	-\frac{2}{9}&\frac{1}{9}&\frac{17}{9}&\frac{2}{3}\\
-	\frac{2}{9}&0&-\frac{16}{9}&-\frac{1}{3}
+	\frac{1}{9}&0&-\frac{8}{9}&-\frac{2}{3}\\
+	\frac{2}{9}&-\frac{2}{9}&-2&\frac{1}{3}\\
+	\frac{2}{9}&\frac{2}{9}&\frac{14}{9}&0\\
+	0&\frac{1}{9}&\frac{1}{9}&-\frac{2}{3}
 \end{bmatrix}
 \begin{bmatrix}
 	b_1\\
 	b_2\\
 	b_3\\
-	b_4
+	0
 \end{bmatrix}\
 $$
-
+So x above is one possible solution.
 \end{enumerate}
 
 \newpage
@@ -828,8 +1165,41 @@ Answer the following questions:
 
 \noindent
 \textbf{Solution.}
-Please insert your solution here ...
-
+\begin{enumerate}
+	\item 
+	$\because x_{L S}=\textbf{A}^{\dagger} y$
+	$$
+	\mathbf{A}^{T} \mathbf{Ax}_{LS} = \mathbf{A}^{T} \mathbf{A} \mathbf{A}^{\dagger} y
+	$$
+	$\because \left(\mathbf{AA}^{\dagger}\right)^{T}=\mathbf{AA}^{\dagger}$
+	$$
+	\mathbf{A}^{T} \mathbf{A} \mathbf{A}^{\dagger} y = \mathbf{A}^{T}\left(\mathbf{A} \mathbf{A}^{\dagger}\right)^{T} \mathbf{y}
+	$$
+$$
+\mathbf{A}^{T}\left(\mathbf{A} \mathbf{A}^{\dagger}\right)^{T} \mathbf{y}=\mathbf{A}^{T}\left(\mathbf{A}^{\dagger}\right)^{T} \mathbf{A}^{T} \mathbf{y}=\left(\mathbf{A A}^{\dagger} \textbf{A}\right)^{T} \mathbf{y}
+$$
+	$\because \textbf{A}\textbf{A}^{\dagger} \textbf{A}=\textbf{A}$
+$$
+\left(\mathbf{A A}^{\dagger} \textbf{A}\right)^{T} \mathbf{y} = \mathbf{A}^{T} y
+$$
+	
+	We have $x_{L S} \in X_{L S},$ so $x_{L S}$ is a solution to the LS problem.
+	
+	denote $x_{\text {Null }}=\left\{\mathbf{x} \in \mathbb{R}^{n} \mid \mathbf{A}^{T} \mathbf{A} \mathbf{x}=0\right\}$ so $x_{\text {Null }} \in \mathcal{N}(\mathbf{A})$ and any $x \in \mathbf{x}_{\text {LS }}$ can be represented by the addition of $\mathbf{x}_{\mathbf{L}} \mathbf{s}$ and $\mathbf{x}_{\text {Null }}$
+	
+	The 2 -norm in $\mathrm{X}_{\mathrm{LS}}$ is equal to $\left\|\mathrm{x}_{\mathrm{Null}}-\left(-\mathrm{x}_{L S}\right)\right\|_{2}$. when $\mathrm{x}_{\mathrm{Nu} 11}$ is the vector which is $\mathrm{x}_{L S}$ projects onto
+	the subspace $\mathcal{N}(A)$ the 2 -norm in $\mathrm{X}_{\mathrm{LS}}$ is minimum. since the orthogonal projection onto $\mathcal{N}(\mathbf{A})$ is given by $\mathbf{\Pi}_{\mathcal{N}(A)}=\mathbf{I}-\mathbf{A}^{\dagger} \mathbf{A}$
+	$$
+	\mathbf{x}_{N u l l}=\left(\mathbf{I}-\mathbf{A}^{\dagger} \mathbf{A}\right) \mathbf{x}_{\mathbf{L}} \mathbf{s}=\mathbf{x}_{\mathbf{L}} \mathbf{s}-\mathbf{A}^{\dagger} \mathbf{A} \mathbf{x}_{\mathbf{L}} \mathbf{s}=\mathbf{x}_{\mathbf{L}} \mathbf{s}-\mathbf{A}^{\dagger} \mathbf{A} \mathbf{A}^{\dagger} \mathbf{y}=\mathbf{x}_{\mathbf{L}} \mathbf{s}-\mathbf{A}^{\dagger} \mathbf{y}=0
+	$$
+	So $\mathbf{x}_{\mathrm{L} . \mathrm{S}}=\arg \min _{\mathbf{x} \in X_{\mathrm{La}}}\|\mathbf{x}\|_{2}$
+	\item  If $X_{\mathrm{LS}}=\left\{\mathrm{x}_{\mathrm{LS}}\right\},$ the solution of equation $\mathrm{A}^{T} \mathrm{A} X=\mathrm{A}^{T} y$ is unique. So matrix $\mathrm{A}^{\mathrm{T}} \mathrm{A}$ is column full rank.
+	since $\mathcal{R}(\mathbf{A})=\mathcal{R}\left(\mathbf{A}^{\mathbf{T}} \mathbf{A}\right),$ we have rank $(\mathbf{A})=n$
+	If $\operatorname{rank}(\mathbf{A})=n, \mathbf{A}^{\mathbf{T}} \mathbf{A}$ is invertible, the solution of equation $\mathbf{A}^{T} \mathbf{A} X=\mathbf{A}^{T} y$ just is $\left(A^{T} A^{-1} \mathbf{A}^{T}\right),$ so the
+	solution is unique, it means that $X_{\mathrm{LS}}=\left\{\mathrm{x}_{\mathrm{LS}}\right\}$
+	Above all, $X_{\mathrm{LS}}=\left\{\mathrm{x}_{\mathrm{LS}}\right\}$ if and only if rank $(\mathbf{A})=n$
+	
+\end{enumerate}
 \end{document}
 
 
