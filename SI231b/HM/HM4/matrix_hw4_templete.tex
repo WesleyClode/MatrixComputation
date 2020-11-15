@@ -94,10 +94,10 @@
 	\textbf{\LARGE{SI231 - Matrix Computations, Fall 2020-21}}\\
 	{\Large Homework Set \#4}\\
 	\texttt{Prof. Yue Qiu and Prof. Ziping Zhao}\\
-	\texttt{\textbf{Name:}}   	\texttt{ aaa }  		\hspace{1bp}
+	\texttt{\textbf{Name:}}   	\texttt{ Tian Yun }  		\hspace{1bp}
 	\texttt{\textbf{Major:}}  	\texttt{ Master in CS } 	\\
-	\texttt{\textbf{Student No.:}} 	\texttt{ 2018123456}     \hspace{1bp}
-	\texttt{\textbf{E-mail:}} 	\texttt{ aaa@shanghaitech.edu.cn}
+	\texttt{\textbf{Student No.:}} 	\texttt{ 2019232102}     \hspace{1bp}
+	\texttt{\textbf{E-mail:}} 	\texttt{ tianyun@shanghaitech.edu.cn}
 \par\end{center}
 
 \noindent
@@ -171,7 +171,32 @@ Consider the $2\times 2$ matrix \[ {\bf A} = \begin{bmatrix}
 \noindent
 \textbf{Solution.}
 \begin{enumerate}
-    \item Insert your solution here ...
+    \item 
+    Solution :
+    
+    $\bA$ can be diagonalized
+    
+    Assume $|\lambda I - A| = 0$ , $det(\lambda I - A)=(\lambda +4)(\lambda-5)+18 = \lambda^2-\lambda-2=(\lambda-2)(\lambda+1)$
+    
+    $\lambda_1 = 2,\quad \lambda_2 = -1$
+    
+    if $\lambda_1 =2$ ,$(2E-A)x = 0$,so the corresponding eignvector will be $\xi_1 = [1 -2]^T$
+    
+    if $\lambda_1 =-1$ ,$(-E-A)x = 0$,so the corresponding eignvector will be $\xi_1 = [1 -1]^T$
+    
+    $$
+     {\bf V} = \left[\begin{array}{ll}
+    	 1 & 1 \\
+    	-2 & -1
+    \end{array}\right]   
+	 {\bf \Lambda} = \left[\begin{array}{ll}
+		2 & 0\\
+		0 & -1
+	\end{array}\right]
+$$
+
+$$A = V \Lambda V^{-1}$$
+
     \item 
 \end{enumerate}
 
