@@ -1,0 +1,132 @@
+\documentclass{article}
+
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+
+\title{A template for the \emph{arxiv} style}
+
+
+\author{
+	Yun Tian\\
+	%\thanks{Use footnote for providing further
+	%	information about author (webpage, alternative
+	%	address)---\emph{not} for acknowledging funding agencies.} \\
+	Department of Information and Technology\\
+	ShanghaiTech University\\
+	2019232102\\
+	\texttt{tianyun@shanghaitech.edu} \\
+	%% examples of more authors
+	\And
+	Zhaojun hu \\
+	Department of Information and Technology\\
+	ShanghaiTech University\\
+	%  Santa Narimana, Levand \\
+	2019232087\\
+	\texttt{huzhj1@shanghaitech.edu} \\
+  %% \AND
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+}
+
+\begin{document}
+	\maketitle
+	
+	\begin{abstract}
+		In the investigation of 3D reconstruction technology, we found that point cloud registration is closely related to matrix calculation.Therefore, our team is going to study this field and dig ICP algorithm deeply. In addition to learning the traditional ICP algorithm, we aim to learn and implement cutting-edge algorithms, how the least-squares formulation can be relaxed into a convex program, namely, a semidefinite program (SDP) is our group main target. The basic principle of ICP is described in the initial report, and in the final report, we hope to show the implementation of the SDP algorithm.
+	\end{abstract}
+	
+	
+	% keywords can be removed
+	\keywords{ICP \and Least square\and SDP}
+	\section{Description of the problem}
+	The problem of point cloud registration comes up in computer vision and graphics and in distributed approaches to molecular conformation  and sensor network localization. The registration problem in question is one of determining the coordinates of a point cloud $P$ from the knowl- edge of (possibly noisy) coordinates of smaller point cloud subsets (called patches) $P_1 , . . . , P_M$ that are derived from $P$ through some general transformation. In certain applications, one is often interested in finding the optimal transforms (one for each patch) that consistently align $P_1, . . . , P_M$ . This can be seen as a subproblem in the determination of the coordinates of $P$.
+	
+	In this paper, we consider the problem of rigid registration in which the points within a given $P_i$ are (ideally) obtained from $P$ through an unknown rigid transform. Moreover, we assume that the correspondence between the local patches and the original point cloud is known; that is, we know beforehand which points from $P$ are contained in a given $P_i$. In fact, one has a control on the correspondence in distributed approaches to molecular conformation and sensor network localization. While this correspondence is not directly available for certain graphics and vision problems, such as multiview registration, it is in principle possible to estimate the correspondence by aligning pairs of patches, e.g., using the ICP (iterative closest point) algorithm.
+	
+	Iterative closest point (ICP) is an algorithm employed to minimize the difference between two clouds of points. ICP is often used to reconstruct 2D or 3D surfaces from different scans, to localize robots and achieve optimal path planning (especially when wheel odometry is unreliable due to slippery terrain), to co-register bone models, etc.
+	\section{Description of the ICP}
+	Point Cloud Registration refers to the input of two point clouds $P_s$ (source) and $P_t$ (target) and the output of a transformation T such that T($P_s$) and $P_t$ coincide as much as possible. The transform T may or may not be rigid, but in this paper only rigid transforms are considered, i.e. transforms include only rotation and translation.
+	
+	The point cloud alignment can be divided into two steps, the Coarse Registration and the Fine Registration. Coarse registration refers to the rough registration when the transformation between two point clouds is completely unknown, the purpose is mainly to provide a good initial value of the transformation for the fine registration; the fine registration criterion is given an initial transformation, and further optimization to obtain a more accurate transformation.
+	
+	At present, the most widely used point cloud fine alignment algorithm is the Iterative Closest Point (ICP) and various variants of ICP algorithm.
+	
+	\section{Description of the algorithm}
+	For the case where T is a rigid transformation, the point cloud alignment problem can be described as:
+	
+	\begin{equation}
+		R^{*}, t^{*}=\arg \min _{R, t}  \frac{1}{\left|P_{s}\right|} \sum_{i=1}^{\mid P_{s}|}\left\|p_{t}^{i}-\left(R \cdot p_{s}^{i}+t\right)\right\|^{2}
+	\end{equation}
+	
+	Here $p_s$ and $p_t$ are the one-to-one correspondence points in the source and target point clouds.
+	
+	The intuitive idea of the ICP algorithm is as follows:
+	\begin{enumerate}
+		\item If we know the correspondence between points on two point clouds, then we can use Least Squares to solve for the R, t parameter.
+		\item How do you know the correspondence of the points? If we already know a roughly reliable R, t parameter, then we can find the correspondence between points on two point clouds by being greedy (directly looking for the closest point as a correspondence).
+	\end{enumerate}
+	
+	\subsection{Find Closet Point}
+	Use the initial $R_0$, $t_0$ or $R_{k-1}$, $t_{k-1}$ obtained from the previous iteration to transform the initial point cloud to obtain a temporary transformed point cloud, and then compare this point cloud with the target point cloud to find the source point cloud The nearest neighbor of each point in the target point cloud.
+	
+	If you directly compare to find the nearest neighbor, you need to perform a double loop, and the computational complexity is $O(|Ps||Pt|)$. This step will be time-consuming. Common acceleration methods are:
+	
+	Set the distance threshold. When the distance between the point and the point is less than a certain threshold, the corresponding point is considered to be found, without traversing the entire point set;
+	Use ANN (Approximate Nearest Neighbor) to speed up the search, commonly used KD-tree; the computational complexity of KD-tree building is $O(N log(N))$, and the search usually has a complexity of $O(log(N))$ (the worst Case $O(N)$).
+	
+	\subsection{Find Best Transform}
+	For the point-to-point ICP problem, there is a closed-form solution to find the optimal transformation, which can be calculated with the help of SVD decomposition.
+	
+	The conclusion is given first. In the case where the correspondence of points is known, let $\hat{p}_{s}^{i}=p_{s}^{i}-\bar{p}_{s}, \hat{p}_{t}^{i}=p_{t}^{i}-\bar{p}_{t}$ represent the center of mass of the source and target point clouds respectively, let $H=\sum_{i=1}^{P_{|s|}} \hat{p}_{s}^{i} \hat{p}_{t}^{i^{T}}$, which is a 3x3 matrix, SVD decomposition of H gives $H=U \Sigma V^{T}$, then the optimal rotation of the point-to-point ICP problem is.
+	
+	$$
+	R^* = VU^T
+	$$
+	The optimal translation is:
+	$$
+	t* = \hat{p}_{t}-R^*\hat{p}_s
+	$$
+	
+	\subsection{Iteration}
+	At each iteration, we will get the current optimal transform parameter $R_k,t_k$, and then apply this transform to the current source point cloud; the steps of "find the nearest corresponding point" and "solve the optimal transform" are iterated until the iteration termination condition is satisfied. Commonly used termination conditions are:
+	\begin{enumerate}
+		\item The variation of $R_k$,$t_k$ is less than a certain value.
+		\item loss less than a certain value
+		\item Maximum number of iterations reached
+	\end{enumerate}
+
+\nocite{*}
+\bibliography{iclr2019_conference}
+\bibliographystyle{iclr2019_conference}
+%\bibliographystyle{unsrt}  
+\bibliography{references}  %%% Remove comment to use the external .bib file (using bibtex).
+%%% and comment out the ``thebibliography'' section.
+%\bibliographystyle{IEEEannot}
+%\bibliography{annot}
+
+%%% Comment out this section when you \bibliography{references} is enabled.
+
+
+\end{document}
