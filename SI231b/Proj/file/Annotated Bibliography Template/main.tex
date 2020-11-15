@@ -1,0 +1,48 @@
+%% This is annot.tex.
+%% 
+%% You'll need to change the title and author fields to reflect your
+%% information.
+%%
+%% Author: Titus Barik (titus@barik.net)
+%% Homepage: http://www.barik.net/sw/ieee/
+%% Reference: http://www.ctan.org/tex-archive/info/simplified-latex/
+
+\documentclass [11pt]{article}
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+
+\title{A template for the \emph{arxiv} style}
+
+
+\author{
+	Yun Tian\\
+	%\thanks{Use footnote for providing further
+	%	information about author (webpage, alternative
+	%	address)---\emph{not} for acknowledging funding agencies.} \\
+	Department of Information and Technology\\
+	ShanghaiTech University\\
+	2019232102\\
+	\texttt{tianyun@shanghaitech.edu} \\
+	%% examples of more authors
+	\And
+	Zhaojun hu \\
+	Department of Information and Technology\\
+	ShanghaiTech University\\
+	%  Santa Narimana, Levand \\
+	2019232087\\
+	\texttt{huzhj1@shanghaitech.edu} \\
+\begin{document}
+\maketitle
+\nocite{*}
+\bibliographystyle{IEEEannot}
+\bibliography{annot}
+\end{document}

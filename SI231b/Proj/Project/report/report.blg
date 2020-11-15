@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: report.aux
+The style file: iclr2019_conference.bst
+Database file #1: iclr2019_conference.bib
+Repeated entry---line 32 of file iclr2019_conference.bib
+ : @article{cucuringu2012sensor
+ :                             ,
+I'm skipping whatever remains of this entry
+Warning--can't use both volume and number fields in huang2013consistent
+You've used 8 entries,
+            2773 wiz_defined-function locations,
+            650 strings with 6605 characters,
+and the built_in function-call counts, 4664 in all, are:
+= -- 446
+> -- 231
+< -- 11
++ -- 78
+- -- 69
+* -- 373
+:= -- 657
+add.period$ -- 28
+call.type$ -- 8
+change.case$ -- 47
+chr.to.int$ -- 7
+cite$ -- 17
+duplicate$ -- 225
+empty$ -- 386
+format.name$ -- 83
+if$ -- 1028
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 8
+newline$ -- 48
+num.names$ -- 32
+pop$ -- 96
+preamble$ -- 1
+purify$ -- 39
+quote$ -- 0
+skip$ -- 183
+stack$ -- 0
+substring$ -- 236
+swap$ -- 64
+text.length$ -- 8
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 88
+warning$ -- 1
+while$ -- 45
+width$ -- 0
+write$ -- 118
+(There was 1 error message)

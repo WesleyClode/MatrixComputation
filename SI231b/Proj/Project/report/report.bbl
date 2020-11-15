@@ -1,0 +1,68 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Besl \& McKay(1992)Besl and McKay]{besl1992method}
+Paul~J Besl and Neil~D McKay.
+\newblock Method for registration of 3-d shapes.
+\newblock In \emph{Sensor fusion IV: control paradigms and data structures},
+  volume 1611, pp.\  586--606. International Society for Optics and Photonics,
+  1992.
+
+\bibitem[Cucuringu et~al.(2012{\natexlab{a}})Cucuringu, Lipman, and
+  Singer]{cucuringu2012sensor}
+Mihai Cucuringu, Yaron Lipman, and Amit Singer.
+\newblock Sensor network localization by eigenvector synchronization over the
+  euclidean group.
+\newblock \emph{ACM Transactions on Sensor Networks (TOSN)}, 8\penalty0
+  (3):\penalty0 1--42, 2012{\natexlab{a}}.
+
+\bibitem[Cucuringu et~al.(2012{\natexlab{b}})Cucuringu, Singer, and
+  Cowburn]{cucuringu2012eigenvector}
+Mihai Cucuringu, Amit Singer, and David Cowburn.
+\newblock Eigenvector synchronization, graph rigidity and the molecule problem.
+\newblock \emph{Information and Inference: A Journal of the IMA}, 1\penalty0
+  (1):\penalty0 21--67, 2012{\natexlab{b}}.
+
+\bibitem[Huang \& Guibas(2013)Huang and Guibas]{huang2013consistent}
+Qi-Xing Huang and Leonidas Guibas.
+\newblock Consistent shape maps via semidefinite programming.
+\newblock In \emph{Computer Graphics Forum}, volume~32, pp.\  177--186. Wiley
+  Online Library, 2013.
+
+\bibitem[Mitra et~al.(2004)Mitra, Gelfand, Pottmann, and
+  Guibas]{mitra2004registration}
+Niloy~J Mitra, Natasha Gelfand, Helmut Pottmann, and Leonidas Guibas.
+\newblock Registration of point cloud data from a geometric optimization
+  perspective.
+\newblock In \emph{Proceedings of the 2004 Eurographics/ACM SIGGRAPH symposium
+  on Geometry processing}, pp.\  22--31, 2004.
+
+\bibitem[Pottmann et~al.(2006)Pottmann, Huang, Yang, and
+  Hu]{pottmann2006geometry}
+Helmut Pottmann, Qi-Xing Huang, Yong-Liang Yang, and Shi-Min Hu.
+\newblock Geometry and convergence analysis of algorithms for registration of
+  3d shapes.
+\newblock \emph{International Journal of Computer Vision}, 67\penalty0
+  (3):\penalty0 277--296, 2006.
+
+\bibitem[Sharp et~al.(2002)Sharp, Lee, and Wehe]{sharp2002multiview}
+Gregory~C Sharp, Sang~W Lee, and David~K Wehe.
+\newblock Multiview registration of 3d scenes by minimizing error between
+  coordinate frames.
+\newblock In \emph{European Conference on Computer Vision}, pp.\  587--597.
+  Springer, 2002.
+
+\bibitem[Williams \& Bennamoun(2000)Williams and
+  Bennamoun]{williams2000simultaneous}
+John~A Williams and Mohammed Bennamoun.
+\newblock Simultaneous registration of multiple point sets using orthonormal
+  matrices.
+\newblock In \emph{2000 IEEE International Conference on Acoustics, Speech, and
+  Signal Processing. Proceedings (Cat. No. 00CH37100)}, volume~4, pp.\
+  2199--2202. IEEE, 2000.
+
+\end{thebibliography}
