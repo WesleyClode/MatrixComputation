@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.27)  15 NOV 2020 22:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.27)  17 NOV 2020 08:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -762,25 +762,31 @@ our codes into \T1/phv/m/n/10 your_student_id+hw4_code.zip
  []
 
 [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4
+[2] [3] [4] [5]
 
-] [5] [6] [7] [8] [9
+Package amsmath Warning: Foreign command \atop;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 355.
+
+[6
+
+] [7] [8] [9] [10] [11
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 488.
- [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 488.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 622.
+ [12]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 622.
  (./matrix_hw4_templete.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 488.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 488.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 622.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 622.
 Package rerunfilecheck Info: File `matrix_hw4_templete.out' has not changed.
 (rerunfilecheck)             Checksum: CDD800B913447159CE247A95EDC1AFF2;379.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 488.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 622.
  ) 
 Here is how much of TeX's memory you used:
- 12439 strings out of 480608
- 190658 string characters out of 5903630
- 492466 words of memory out of 5000000
+ 12441 strings out of 480608
+ 190672 string characters out of 5903630
+ 492468 words of memory out of 5000000
  27983 multiletter control sequences out of 15000+600000
  646595 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -792,6 +798,7 @@ ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texli
 ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texliv
 e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/
 2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/20
+20/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/20
 20/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2020/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2020/texmf
@@ -808,10 +815,10 @@ st/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts
 urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/
 utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pf
 b></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on matrix_hw4_templete.pdf (10 pages, 230554 bytes).
+Output written on matrix_hw4_templete.pdf (12 pages, 256312 bytes).
 PDF statistics:
- 269 PDF objects out of 1000 (max. 8388607)
- 231 compressed objects within 3 object streams
- 88 named destinations out of 1000 (max. 500000)
+ 281 PDF objects out of 1000 (max. 8388607)
+ 240 compressed objects within 3 object streams
+ 90 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

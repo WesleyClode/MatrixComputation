@@ -220,11 +220,106 @@ Prove that:
 \noindent
 \textbf{Solution}
 \begin{enumerate}
-    \item Insert your solution here ...
-    \item
-    \item
-    \item 
-    \item 
+    \item $\textbf{Solution}$: 
+    
+    If 0 is an eigenvalue of $A,$ then $A x=0 \cdot x=0$ for some non-zero $x,$ which clearly means $A$ is singular. On the other hand, if $A$ is singular, then $A x=0$ for some non-zero $x,$ which is to say that $A x=0 \cdot x$ for some non-zero $x$, which obviously means that 0 is an eigenvalue of $A$.
+    
+    \item     
+    $\textbf{Proof}$: 
+    
+	If a matrix $A$ is diagonalizable, then the algebraic multiplicity of any eigenvalue of $A$ is equal to its geometric multiplicity. In particular, if $A$ is symmetric (Hermitian) or all the eigenvalues of $A$ are distinct, then $A$ is diagonalizable. From rank-nullity theorem, it is known that
+	$$
+	\operatorname{rank}(A)+\text { nullity }(A)=\operatorname{dim}(A)
+	$$
+	Nullity is the dimension of the kernel space of $A$. Meaning the number of linearly independent eigenvectors $x$ for which $A x=0 \cdot x .$ So nullity in this case implies the multiplicity of 0 as an eigenvalue of $A$ and hence rank implies the number of nonzero eigenvalues of $A$.
+    \item$\textbf{Proof}$: 
+    
+    *************************************************************************************
+    
+    Proposition. If $A$ is $n \times m$ and $B$ is $m \times k,$ then
+    $$
+    \operatorname{rank}(\mathbf{A B}) \leq \min (\operatorname{rank}(\mathbf{A}), \operatorname{rank}(\boldsymbol{B}))
+    $$
+    since $(A B)_{j, l}=\sum_{v=1}^{n} A_{j, v} B_{v, l},$ the rows of $A B$ are linear combinations of the rows of $B $ that is ${R}(A B) \subseteq {R}(B),$ whence $\operatorname{rank}(A B) \leq \operatorname{rank}(B) .$ Also, $G(A B) \subseteq G(A),$ whence $\operatorname{rank}(A B) \leq \operatorname{rank}(A)$
+    
+    *************************************************************************************
+    
+    
+    ${\bf A}$ admits an  eigendecomposition (eigenvalue decomposition).We write $A,$ in spectral form $A=V \Lambda V^{-1},$ ; our goal is to show that $\operatorname{rank}(A)=\operatorname{rank}(\Lambda)$
+    rank $(A) \leq \operatorname{rank}(V \Lambda) \leq \operatorname{rank}(\Lambda) .$ And since $\Lambda=V^{-1} A V,$ we have also $\operatorname{rank}(\Lambda) \leq \operatorname{rank}\left(V^{-1} A \right) \leq \operatorname{rank}(A)$, so rank(A) = rank($\Lambda$)
+    
+
+    
+    ${\sf rank}({\bf A})$ = number of nonzero eigenvalues of ${\Lambda}$ = number of nonzero eigenvalues of ${\bf A}$
+    \item $\textbf{Proof}$: 
+    
+    Let $A$ be a Hermitian matrix.
+    Then, by definition, $\mathbf{A}=\mathbf{A}^{\dagger},$ where $^{\dagger}$ designates the conjugate transpose.
+    Let $\lambda$ be an eigenvalue of $\mathbf{A}$.
+    Let $\mathbf{v}$ be an eigenvector corresponding to the eigenvalue $\lambda$ of $\mathbf{A}$.
+    Denote with $\langle\cdot, \cdot\rangle$ the inner product on $\mathrm{C}$.
+    $$
+    \lambda *\langle v, v\rangle=\langle\lambda * v, v\rangle \quad \text { Properties of Complex Inner Product }
+    $$
+    Definition of Eigenvector: $\lambda * v=\mathbf{A} * v$
+    $$
+    =\langle v, \mathbf{A} * v\rangle
+    $$
+    $\mathbf{A}$ is Hermitian, so $\mathbf{A}^{\dagger}=\mathbf{A}$
+    $$
+    \begin{array}{ll}
+    	=\langle v, \lambda * v\rangle & \text { Definition of Eigenvector: } \lambda * v=\mathbf{A} * v \\
+    	=\bar{\lambda} *\langle v, v\rangle & \text { Properties of Complex Inner Product }
+    \end{array}
+    $$
+    We have that $v \neq 0,$ and because of the positive definiteness, it must be that:
+    $$
+    \langle v, v\rangle \neq 0
+    $$
+    Thus:
+    $$
+    \langle v, v\rangle \neq 0
+    $$
+    So we can divide both sides by $\langle v, v\rangle$
+    Thus $\lambda=\bar{\lambda}$.
+    By Complex Number equals Conjugate iff Wholly Real, $\lambda$ is a real number.
+    $\lambda$ was arbitrary, so it follows that every eigenvalue is a real number.
+    Hence the result.
+    \item $\textbf{Proof}$: 
+    
+    Suppose that $A u=\lambda u$ and $A v=\mu v$ for $\lambda \neq \mu .$ Then
+    $$
+    \begin{array}{c}
+    	\lambda\langle u, v\rangle=\langle A u, v\rangle=\langle u, A v\rangle=\langle u, \mu v\rangle=\mu\langle u, v\rangle \\
+    	66
+    \end{array}
+    $$
+    since $\mu \neq \lambda$ it follows that $\langle u, v\rangle=0$. Suppose that $A$ has $n$ distinct eigenvalues $\left\{\lambda_{1}, \ldots, \lambda_{n}\right\}$ with corresponding orthogonal
+    eigenvectors $\left\{u_{1}, \ldots, u_{n}\right\} .$ Let us also agree to scale the eigenvectors so that
+    $$
+    \left\langle u_{i}, u_{j}\right\rangle=\delta_{i j}
+    $$
+    where $\delta_{i j}$ is the so-called Kronecker delta
+    $$
+    \delta_{i j}=\left\{\begin{array}{ll}
+    	0 & \text { if } i \neq j \\
+    	1 & \text { if } i=j
+    \end{array}\right.
+    $$
+    We recall that the eigenvalue equation can be written in matrix form
+    $$
+    A U=U \Lambda
+    $$
+    where $U=\left(u_{1} u_{2} \ldots u_{n}\right)$ and $\Lambda=\operatorname{diag}\left\{\lambda_{1}, \ldots, \lambda_{n}\right\} .$ We now observe from the orthonor-
+    mality of the eigenvectors that
+    $$
+    U^{*} U=I
+    $$
+    Hence $U^{-1}=U^{*}$ and consequently
+    $$
+    A=U \Lambda U^{*}
+    $$
+    In other words, $A$ can be diagonalized in a particularly simple way.
 \end{enumerate}
 
 \clearpage
@@ -236,8 +331,37 @@ For any $k\in\{1,2,3,...,n\}$, prove that \[\lambda_k=\min\limits_{\bigS_{n-k+1}
 
 \noindent
 \textbf{Solution.}
-Insert your solution here ...
 
+Let $A=Q^{T} \Lambda Q$ be the eigendecomposition of $A . \quad$ We observe that $x^{T} A x=x^{T} Q^{T} \Lambda Q x=$ $(Q x)^{T} \Lambda(Q x),$ and since $Q$ is orthogonal, $\|Q x\|=\|x\| .$ Thus it suffices to consider the case when $A=\Lambda$ is a diagonal matrix with the eigenvalues $\lambda_{1}, \ldots, \lambda_{n}$ in the diagonal. Then we can write
+$$
+x^{T} A x=\left(\begin{array}{lll}
+	x_{1} & \cdots & x_{n}
+\end{array}\right)\left(\begin{array}{lll}
+	\lambda_{1} & & \\
+	& \ddots & \\
+	& & \lambda_{n}
+\end{array}\right)\left(\begin{array}{c}
+	x_{1} \\
+	\vdots \\
+	x_{n}
+\end{array}\right)=\sum_{i=1}^{n} \lambda_{i} x_{i}^{2}
+$$
+We note that when $A$ is diagonal, the eigenvectors of $A$ are $v_{k}=e_{k},$ the standard basis vector in $\mathbb{R}^{n},$ i.e. $\left(e_{k}\right)_{i}=1$ if $i=k,$ and $\left(e_{k}\right)_{i}=0$ otherwise. Then the condition $x \in S_{k-1}^{\perp}$ implies $x \perp e_{i}$ for $i=1, \ldots, k-1$ so $x_{i}=\left\langle x, e_{i}\right\rangle=0 .$ Therefore, for $x \in S_{k-1}^{\perp}$ with $\|x\|=1,$ we have
+$$
+x^{T} A x=\sum_{i=1}^{n} \lambda_{i} x_{i}^{2}=\sum_{i=k}^{n} \lambda_{i} x_{i}^{2} \geq \lambda_{k} \sum_{i=k}^{n} x_{i}^{2}=\lambda_{k}\|x\|^{2}=\lambda_{k}
+$$
+On the other hand, plugging in $x=e_{k} \in S_{k-1}^{\perp}$ yields $x^{T} A x=\left(e_{k}\right)^{T} A e_{k}=\lambda_{k} .$ This shows that
+$$
+\lambda_{k}=\min _{\|x\|=1 \atop x \in S_{h-1}^{\perp}} x^{T} A x
+$$
+Similarly, for $\mid x \|=1$
+$$
+x^{T} A x=\sum_{i=1}^{n} \lambda_{i} x_{i}^{2} \leq \lambda_{\max } \sum_{i=1}^{n} x_{i}^{2}=\lambda_{\max }\|x\|^{2}=\lambda_{\max }
+$$
+On the other hand, taking $x=e_{n}$ yields $x^{T} A x=\left(e_{n}\right)^{T} A e_{n}=\lambda_{\max } .$ Hence we conclude that
+$$
+\lambda_{\max }=\max _{\|x\|=1} x^{T} A x
+$$
 \newpage
 \noindent\textbf{Problem 4}. \textcolor{blue}{(5 points+8 points+10 points)}
 \noindent To assist the understanding of this problem, we first provide some \textbf{basic concepts of graph theory:}
@@ -364,7 +488,17 @@ Programming languages are not restricted. In \codeword{Matlab}, you are free to 
 \noindent
 \textbf{Solution}
 \begin{enumerate}
-    \item Insert your solution here ...
+    \item 
+        Solution :
+    
+    $\bA$ can be diagonalized
+    
+    Assume $|\lambda I - A| = 0$ , $det(\lambda I - A)=\lambda^2-\alpha \beta$
+    
+    $\lambda_1 = \lambda_2 =\sqrt{\alpha \beta} $
+    
+    if $\lambda =\sqrt{\alpha \beta} $ ,$(\sqrt{\alpha \beta} E-A)x = 0$,so the corresponding eignvector will be $\xi= [1    \quad \sqrt{\frac{\beta}{\alpha}}]^T$
+    
     \item
 \end{enumerate}
 
