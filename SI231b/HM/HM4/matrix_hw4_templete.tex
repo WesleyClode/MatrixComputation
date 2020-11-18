@@ -605,18 +605,55 @@ Based on your observations, explain why the implicit QR iteration is indeed equi
 	\SetAlgoLined
 	\Input{$\bA^{(k-1)} \in \mathbb{C}^{n\times n}$ which is of upper Hessenberg form \textcolor{blue}{\texttt{ \% corresponding to $\bA^{(k-1)}$ in step 3 of Algorithm \ref{alg:hessen_qr_iter}}}} 
 	\textcolor{blue}{\texttt{ \% Perform QR for $\bA^{(k)}$ using Givens roations}}\\
-	\textcolor{red}{\texttt{ \% Insert your algorithm here ... }}\\
+		\For{$k= 1: n-1$}{
+			$\bA(k: k+1, k: n)=\left[\begin{array}{rr}
+				c_{k} & s_{k} \\
+				-s_{k} & c_{k}
+			\end{array}\right]^{T} \bA(k: k+1, k: n)$\\
+		
+	}
 	\textcolor{blue}{\texttt{ \% Matrix computation}}\\
-	\textcolor{red}{\texttt{ \% Insert your algorithm here ... }}\\
+	\For{$k= 1: n-1$}{
+		$H(1: k+1, k: k+1)=H(1: k+1, k: k+1)\left[\begin{array}{rr}
+			c_{k} & s_{k} \\
+			-s_{k} & c_{k}
+		\end{array}\right]$\\
+	}
+
 	\Output{$\bA^{(k)}$ \textcolor{blue}{\texttt{ \% corresponding to $\bA^{(k)}$ in step 4 of Algorithm \ref{alg:hessen_qr_iter}}}}
 \end{algorithm}
+
+
+
 
 
 \noindent
 \textbf{Solution}
 \begin{enumerate}
-    \item Insert your solution here ...
-    \item
+    \item[1.(b)] Perform matrix multiplication such that $\bA^{(k)}$ is of Hessenberg form, Every time we perform householder transformation, we only need to eliminate the elements of the diagonal line one by one.
+    
+    Assuming that A has n rows, then it needs to be eliminated n-1 times given elimination
+    
+    Every Givens elimination we multiplies A by $2 \times 2$ rotation matrix, we need to caculate the rotation matrix as following:
+    
+    
+    $Q = I-2vv^T$, $v = ||a_i||_2-a_i$, $v = \frac{v}{||v||_2}.$  it costs const flops.
+    
+    1. rotation matrix cost 10 flops.
+    
+    2.$\left[\begin{array}{rr}
+    	c_{k} & s_{k} \\
+    	-s_{k} & c_{k}
+    \end{array}\right]^T \bA(k: k+1, k: n)$ cost n flops,as data is accessed across rows
+
+   3.$H(1: k+1, k: k+1)\left[\begin{array}{rr}
+   	c_{k} & s_{k} \\
+   	-s_{k} & c_{k}
+   \end{array}\right]$cost n flops,as data is accessed across rows
+
+	All in all total cost is $n*(10 + n + c) + n*n.$  so is $\bigO(n^2)$
+    \item[2.]
+    
 \end{enumerate}
 
 \end{document}

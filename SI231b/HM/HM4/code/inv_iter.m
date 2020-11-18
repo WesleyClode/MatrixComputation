@@ -1,5 +1,5 @@
 %Implementation of the inverse iteration method for calculating the eigenvectors and eigenvalues of a matrix
-function lambda_k = inv_iter(A,mu)
+function [error,lambda_k] = inv_iter(A,mu)
 q = zeros(100,2);
 q(1,:) = rand(1,2);
 z = zeros(100,2);
@@ -23,12 +23,13 @@ for k = 2:100
     z(k,:) = (pinv(A-mu*eye(size(A)))*q(k-1,:)')';
     q(k,:) = z(k,:)/norm(z(k,:));
     lambda(k) = q(k,:)*A*q(k,:)';
-    
-    if abs(lambda(k)-lambda_ture)<0.01
+    if abs(lambda(k)-lambda_ture)<1e-8
         result = lambda(k); 
+        k_end = k;
         break;
     end
 end
 lambda_k = result;
+error = abs(lambda_ture - lambda(1:k_end));
 end
 
