@@ -495,11 +495,90 @@ Programming languages are not restricted. In \codeword{Matlab}, you are free to 
     
     Assume $|\lambda I - A| = 0$ , $det(\lambda I - A)=\lambda^2-\alpha \beta$
     
-    $\lambda_1 = \lambda_2 =\sqrt{\alpha \beta} $
+    $\lambda_1 =\sqrt{\alpha \beta} $
     
     if $\lambda =\sqrt{\alpha \beta} $ ,$(\sqrt{\alpha \beta} E-A)x = 0$,so the corresponding eignvector will be $\xi= [1    \quad \sqrt{\frac{\beta}{\alpha}}]^T$
     
+    $\lambda_2 =-\sqrt{\alpha \beta} $
+    
+    if $\lambda =-\sqrt{\alpha \beta} $ ,$(-\sqrt{\alpha \beta} E-A)x = 0$,so the corresponding eignvector will be $\xi= [-1    \quad \sqrt{\frac{\beta}{\alpha}}]^T$
+    
     \item
+    \begin{figure}
+    	\centering
+    	\includegraphics[width=0.5\linewidth]{code/inv_iter}
+    	\caption{}
+    	\label{fig:inviter}
+    \end{figure}
+    \begin{figure}
+    	\centering
+    	\includegraphics[width=0.5\linewidth]{code/power_iter}
+    	\caption{}
+    	\label{fig:poweriter}
+    \end{figure}
+set A as \[
+\bA = \begin{bmatrix}
+	0 & 4.6 \\
+	3.4 & 0
+\end{bmatrix}\,,\quad \text{ with }\alpha,\beta > 0\,.
+\]
+Both of the above methods can converge .You can see figure 1 and figure 2.
+
+Some analysis:\\
+\begin{enumerate}
+	\item $
+	v_{0}=\alpha_{1} x_{1}+\alpha_{2} x_{2}+\cdots+\alpha_{n} x_{n} \quad\left(\alpha_{1} \neq 0\right) \\$
+	$
+	v_{1}=A v_{0}=\alpha_{1} \lambda_{1} x_{1}+\alpha_{2} \lambda_{2} x_{2}+\cdots+\alpha_{n} \lambda_{n} x_{n}$\\
+	$
+	\begin{aligned}
+		v_{k} &=A v_{k-1}=\alpha_{1} \lambda_{1}^{k} x_{1}+\alpha_{2} \lambda_{2}^{k} x_{2}+\cdots+\alpha_{n} \lambda_{n}^{k} x_{n} \\
+		&=\lambda_{1}^{k}\left[\alpha_{1} x_{1}+\alpha_{2}\left(\frac{\lambda_{2}}{\lambda_{1}}\right)^{k} x_{2}+\cdots+\alpha_{n}\left(\frac{\lambda_{n}}{\lambda_{1}}\right)^{k} x_{n}\right]
+	\end{aligned}
+	$
+	
+	
+	The smaller the value of $|\frac{\lambda_1}{\lambda_2}|$, the faster the convergence will come. If the absolute value of the two eigenvalues is the same, then it will not converge. If the eigenvalue difference is relatively small, the convergence will be very slow.
+	
+	For example:
+	
+	set A as \[
+	\bA = \begin{bmatrix}
+		0 & 5 \\
+		1 & 0
+	\end{bmatrix}
+	\]
+	$\lambda_1 = 2.23$ $\lambda_2 = -2.23$ 
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\linewidth]{code/power_iter_not}
+		\caption{}
+		\label{fig:poweriternot}
+	\end{figure}
+	Iteration cannot converge, as you can see in figure 3.
+	
+	\item For the inverse power method, mu should not be placed in the middle of the two eigenvalues.
+	
+	set A as \[
+	\bA = \begin{bmatrix}
+		0 & 5 \\
+		1 & 0
+	\end{bmatrix}\,
+	\]
+	$\lambda_1 = 2.23$ $\lambda_2 = -2.23, mu = 0$  
+	Iteration cannot converge, as you can see in figure 4.
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\linewidth]{code/inv_iter_not}
+		\caption{}
+		\label{fig:inviternot}
+	\end{figure}
+	
+\end{enumerate}
+
+
+
+
 \end{enumerate}
 
 
