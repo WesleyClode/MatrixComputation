@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.27)  18 NOV 2020 23:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.25)  20 NOV 2020 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -766,7 +766,7 @@ our codes into \T1/phv/m/n/10 your_student_id+hw4_code.zip
 
 Package amsmath Warning: Foreign command \atop;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 355.
+(amsmath)                 on input line 369.
 
 [6
 
@@ -774,15 +774,15 @@ Package amsmath Warning: Foreign command \atop;
 <code/inv_iter.png, id=130, 562.1pt x 421.575pt>
 File: code/inv_iter.png Graphic file (type png)
 <use code/inv_iter.png>
-Package pdftex.def Info: code/inv_iter.png  used on input line 509.
+Package pdftex.def Info: code/inv_iter.png  used on input line 523.
 (pdftex.def)             Requested size: 236.15787pt x 177.11818pt.
 <code/power_iter.png, id=131, 562.1pt x 421.575pt>
 File: code/power_iter.png Graphic file (type png)
 <use code/power_iter.png>
-Package pdftex.def Info: code/power_iter.png  used on input line 515.
+Package pdftex.def Info: code/power_iter.png  used on input line 529.
 (pdftex.def)             Requested size: 236.15787pt x 177.11818pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 527--529
+Underfull \hbox (badness 10000) in paragraph at lines 541--543
 
  []
 
@@ -790,31 +790,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 527--529
 <code/power_iter_not.png, id=140, 562.1pt x 421.575pt>
 File: code/power_iter_not.png Graphic file (type png)
 <use code/power_iter_not.png>
-Package pdftex.def Info: code/power_iter_not.png  used on input line 554.
+Package pdftex.def Info: code/power_iter_not.png  used on input line 568.
 (pdftex.def)             Requested size: 236.15787pt x 177.11818pt.
 <code/inv_iter_not.png, id=141, 562.1pt x 421.575pt>
 File: code/inv_iter_not.png Graphic file (type png)
 <use code/inv_iter_not.png>
-Package pdftex.def Info: code/inv_iter_not.png  used on input line 572.
+Package pdftex.def Info: code/inv_iter_not.png  used on input line 586.
 (pdftex.def)             Requested size: 236.15787pt x 177.11818pt.
 
 [10 <./code/power_iter_not.png (PNG copy)>] [11 <./code/inv_iter_not.png (PNG c
 opy)>] [12] [13
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 738.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 752.
  [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 738.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 752.
  (./matrix_hw4_templete.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 738.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 738.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 752.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 752.
 Package rerunfilecheck Info: File `matrix_hw4_templete.out' has not changed.
 (rerunfilecheck)             Checksum: CDD800B913447159CE247A95EDC1AFF2;379.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 738.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 752.
  ) 
 Here is how much of TeX's memory you used:
  12490 strings out of 480608
- 191528 string characters out of 5903630
+ 191528 string characters out of 5903629
  494558 words of memory out of 5000000
  28016 multiletter control sequences out of 15000+600000
  646595 words of font info for 144 fonts, out of 8000000 for 9000
@@ -844,7 +844,7 @@ st/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts
 urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/
 utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pf
 b></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on matrix_hw4_templete.pdf (14 pages, 333405 bytes).
+Output written on matrix_hw4_templete.pdf (14 pages, 334925 bytes).
 PDF statistics:
  304 PDF objects out of 1000 (max. 8388607)
  257 compressed objects within 3 object streams
