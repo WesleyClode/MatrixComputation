@@ -27,7 +27,7 @@ title('Error of inverse iteration', 'FontSize', 22);
 A = [0 4.6
     3.4 0];
 
-[error,lambda_k] = inv_iter(A,0);
+[error,lambda_k] = inv_iter(A,1);
 
 N = length(error);
 xx = 0:N-1;

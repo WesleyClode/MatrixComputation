@@ -209,7 +209,7 @@ $$A = V \Lambda V^{-1}$$
     
 Let $\mathbf{P} = \left[\begin{array}{ll}1 & 5 \\ 2 & 1\end{array}\right], \mathbf{B} = \mathbf{P A P}^{-1} =
 \left[\begin{array}{cc}-\frac{4}{3} & \frac{5}{3} \\ -\frac{2}{3} & \frac{7}{3}\end{array}\right],
-$ the eigenvector of $\mathbf{B}$ are $\mathbf{P} v_1$ and $\mathbf{P} v_2$ 
+$ the eigenvector of $\mathbf{B}$ are $\mathbf{P} \xi_1$ and $\mathbf{P} \xi_2$ 
 
 So the matrix has different eigenspaces with $\mathbf{A}$.
 \end{enumerate}
@@ -345,37 +345,51 @@ For any $k\in\{1,2,3,...,n\}$, prove that \[\lambda_k=\min\limits_{\bigS_{n-k+1}
 
 \noindent
 \textbf{Solution.}
+Since A is a symmetric matrix, according to the nature of the eigendecomposition of the symmetric matrix, select its eigenvectors $\left\{u_{1}, \ldots, u_{n}\right\}$ as a group Orthogonal basis. Knowledge about subspace and basis
+That is, this is the $n$ basis of the $n$ dimensional space.
+Now, if there is a subspace $U$ of the $n$ dimensional space, its dimension is $k,$ and the subspace $\operatorname{span}\left(u_{k}, \ldots, u_{n}\right ), \quad$ must have an intersection. 
 
-Let $A=Q^{T} \Lambda Q$ be the eigendecomposition of $A . \quad$ We observe that $x^{T} A x=x^{T} Q^{T} \Lambda Q x=$ $(Q x)^{T} \Lambda(Q x),$ and since $Q$ is orthogonal, $\|Q x\|=\|x\| .$ Thus it suffices to consider the case when $A=\Lambda$ is a diagonal matrix with the eigenvalues $\lambda_{1}, \ldots, \lambda_{n}$ in the diagonal. Then we can write
+This can actually be proved as follows: 
+
+The dimension of $U$ is $k,$ and the dimension of span $\left(u_{k}, \ldots, u_{n}\right)$ is $n-k+1$ . In other words, the sum of the dimensions of the two is greater than $n_{\circ}$ Therefore, there must be a non-zero intersection. 
+
+Therefore, suppose $v$ is an element on the intersection, that is, it belongs to both subspace $U$ and subspace $\operatorname{span}\left(u_{k}, \ldots, u_{n}\right) _{\circ}$ Then, $v \in \operatorname{span}\left(u_{k}, \ldots, u_{n}\right),$ therefore has
 $$
-x^{T} A x=\left(\begin{array}{lll}
-	x_{1} & \cdots & x_{n}
-\end{array}\right)\left(\begin{array}{lll}
-	\lambda_{1} & & \\
-	& \ddots & \\
-	& & \lambda_{n}
-\end{array}\right)\left(\begin{array}{c}
-	x_{1} \\
-	\vdots \\
-	x_{n}
-\end{array}\right)=\sum_{i=1}^{n} \lambda_{i} x_{i}^{2}
+x=\sum_{i=k}^{n} \alpha_{i} u_{i}
 $$
-We note that when $A$ is diagonal, the eigenvectors of $A$ are $v_{k}=e_{k},$ the standard basis vector in $\mathbb{R}^{n},$ i.e. $\left(e_{k}\right)_{i}=1$ if $i=k,$ and $\left(e_{k}\right)_{i}=0$ otherwise. Then the condition $x \in S_{k-1}^{\perp}$ implies $x \perp e_{i}$ for $i=1, \ldots, k-1$ so $x_{i}=\left\langle x, e_{i}\right\rangle=0 .$ Therefore, for $x \in S_{k-1}^{\perp}$ with $\|x\|=1,$ we have
+(Since $\|x\|=1,$ has $\left.\sum_{i=k}^{n} \alpha_{i}=1\right)$
+Then,
 $$
-x^{T} A x=\sum_{i=1}^{n} \lambda_{i} x_{i}^{2}=\sum_{i=k}^{n} \lambda_{i} x_{i}^{2} \geq \lambda_{k} \sum_{i=k}^{n} x_{i}^{2}=\lambda_{k}\|x\|^{2}=\lambda_{k}
+x^{H} \mathbf{A} x=\sum_{i=k}^{n} \alpha_{i}^{2} u_{i}^{H} \mathbf{A} u_{i}= \sum_{i=k}^{n} \lambda_{i} \alpha_{i}^{2} \geq \lambda_{i}
 $$
-On the other hand, plugging in $x=e_{k} \in S_{k-1}^{\perp}$ yields $x^{T} A x=\left(e_{k}\right)^{T} A e_{k}=\lambda_{k} .$ This shows that
+which is:
 $$
-\lambda_{k}=\min _{\|x\|=1 \atop x \in S_{h-1}^{\perp}} x^{T} A x
+\max _{x \in U,\|x\|=1} x^{H} \mathbf{A} x \geq \lambda_{i}
 $$
-Similarly, for $\mid x \|=1$
+It is true for all subspaces $U$. which is:
 $$
-x^{T} A x=\sum_{i=1}^{n} \lambda_{i} x_{i}^{2} \leq \lambda_{\max } \sum_{i=1}^{n} x_{i}^{2}=\lambda_{\max }\|x\|^{2}=\lambda_{\max }
+\min _{\operatorname{dim}(U)=k} \max _{x \in U,\|x\|=1} x^{H} \mathbf{A} x \geq \lambda_{i}
 $$
-On the other hand, taking $x=e_{n}$ yields $x^{T} A x=\left(e_{n}\right)^{T} A e_{n}=\lambda_{\max } .$ Hence we conclude that
+At this time, we prove the other half:
+Obviously, the space $V=\operatorname{span}\left\{u_{1}, \ldots, u_{k}\right\}$ is the selected $k$ dimensional space,
 $$
-\lambda_{\max }=\max _{\|x\|=1} x^{T} A x
+x^{H} \mathbf{A} x \leq \lambda_{i}
 $$
+This conclusion is too obvious to explain. In other words,
+$$
+\max _{x \in V,\|x\|=1} x^{H} \mathbf{A} x \leq \lambda_{i}
+$$
+And $V$ is obviously one of the subspaces $U$ of $k$ dimension, so:
+$$
+\min _{\operatorname{dim}(U)=k} \max _{x \in U,\|x\|=1} x^{H} \mathbf{A} x \leq \lambda_{i}
+$$
+Finally:
+$$
+\min _{\operatorname{dim}(U)=k} \max _{x \in U,\|x\|=1} x^{H} \mathbf{A} x=\lambda_{i}
+$$
+
+
+
 \newpage
 \noindent\textbf{Problem 4}. \textcolor{blue}{(5 points+8 points+10 points)}
 \noindent To assist the understanding of this problem, we first provide some \textbf{basic concepts of graph theory:}
@@ -438,9 +452,54 @@ The matrix $\bL$ is real and symmetric.
 \noindent
 \textbf{Solution}
 \begin{enumerate}
-    \item Insert your solution here ...
-    \item
-    \item
+	\item 	
+	$$
+	\begin{aligned}
+		\bx^T\bL\bx
+		&=\bx (\bI-\frac{1}{d}\bA)\bx^T = \bx \bx^T - \frac{1}{d} \bx \bA \bx^T \\
+		&=\sum_{i \in V} \bx_i^{2}-\sum_{(i, j) \in E} \frac{2 \bx_i \bx_j}{d} \\
+		&=\sum_{(i, j) \in E}\left(\frac{\bx_i}{\sqrt{d}}-\frac{\bx_j}{\sqrt{d}}\right)^{2} \\
+		&=\frac{1}{d}\sum_{(i,j)\in E}(\bx_i-\bx_j)^2\\
+		& \geq 0
+	\end{aligned}
+	$$
+	\item
+	Proof: First, we show that 0 is an eigenvalue of $L$ using the vector $x=D^{-1 / 2} e .$ Then
+	$$
+	\L\left(D^{1 / 2} e\right)=D^{-1 / 2} L_{G} D^{-1 / 2} D^{1 / 2} e=D^{-1 / 2} L_{G} e=0
+	$$
+	since $e$ is a eigenvector of $L_{G}$ corresponding to eigenvalue $0 .$ This shows that $D^{1 / 2} e$ is an eigenvector of $L$ of eigenvalue $0 .$ To show that it's the smallest eigenvalue, notice that $L$ is positive semidefinite.
+	
+	So $\lambda_n=0$.
+
+	Notice that $x^{T}(I+A) x \geq 0$ implies the following chain:
+	$$
+	-x^{T} A x \leq x^{T} x \Longrightarrow x^{T} I x-x^{T} A x \leq 2 x^{T} x \Longrightarrow \frac{x^{T} L x}{x^{T} x} \leq 2 \Longrightarrow \lambda_{n} \leq 2
+	$$
+    \item Let $\bL\in \Rbb^{n\times n}$ be a symmetric matrix, $\bigS_k$ denote a subspace of $\Rbb^n$ of dimension $k$, and $\lambda_1\geq \lambda_2\geq...\geq \lambda_n$ represent the eigenvalues of $\bL$. 
+    For any $k\in\{1,2,3,...,n\}$, we can get that \[\lambda_k=\min\limits_{\bigS_{n-k+1}\subseteq \Rbb^n}\max\limits_{\bx\in\bigS_{n-k+1},||\bx||_2=1} \bx^T\bL\bx.\]
+%    the graph $G$ in $ \bigS_{n-k+1}\subseteq \Rbb^n$ Maximal linearly independent vectors is no more than 
+%   (n-k+1).
+
+
+
+If $\lambda_{k}=0,$ then there exists a $n-k+1$ dimensional subspace $\mathcal{S}$ such that $\forall \mathbf{x} \in \mathcal{S},$ we have $\sum_{(i, j) \in E}\left(\mathbf{x}_{i}-\mathbf{x}_{j}\right)^{2}=$
+0. It also implies that $\forall \mathbf{x}, \mathbf{x}_{i}=\mathbf{x}_{j} \quad \forall(i, j) \in E$ with positive weight. Therefore, for any vertices $i, j$ in the
+same component, $\mathbf{x}_{i}=\mathbf{x}_{j} .$ This means that $\mathbf{x} \in \mathcal{S}$ is constant within each connected component of $G$. Then
+$n-k+1=\operatorname{dim}(\mathcal{S}) \leq$ the number of connected components.
+
+Conversely, 
+
+if $G$ has $\geq n-k+1$ connected components, then we let $\mathcal{S}$ be the space of vectors that are
+constant on each component and this $\mathcal{S}$ has dimension $\geq n-k+1 .$ Furthermore, $\mathbf{x} \in \mathcal{S}$ we have that $\sum_{(i, j) \in E}\left(\mathbf{x}_{i}-\mathbf{x}_{j}\right)^{2}=0 .$ Thus $\max _{\mathbf{x} \in \mathcal{S}_{n-k+1} \backslash\{0\}} \frac{\mathbf{x}^{T} \mathbf{L} \mathbf{x}}{\mathbf{x}^{T} \mathbf{x}}=0$ for any dimension $n-k+1$ subspace $\mathcal{S}_{n-k+1}$
+of the $\mathcal{S}$ we choose. 
+
+Then it is Courant-Fischer form $\lambda_{k}=0$ as any $\mathcal{S}_{n-k+1}$ provides an upper bound, i.e.,
+$$
+\lambda_{k}=\min _{\mathcal{S} \subseteq \mathbb{R}^{n} \operatorname{dim}(\mathcal{S})=n-k+1 \mathbf{x} \in \mathcal{S} \backslash\{0\}} \frac{\mathbf{x}^{T} \mathbf{L} \mathbf{x}}{\mathbf{x}^{T} \mathbf{x}}=\min _{\mathcal{S} \subseteq \mathbb{R}^{n} \operatorname{dim}(\mathcal{S})=n-k+1} 0=0
+$$
+Finally, we prove the graph $G$ has at least $(n-k+1)$ connected components if and only if $\lambda_{k}=0$.
+    
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -518,27 +577,32 @@ Programming languages are not restricted. In \codeword{Matlab}, you are free to 
     if $\lambda =-\sqrt{\alpha \beta} $ ,$(-\sqrt{\alpha \beta} E-A)x = 0$,so the corresponding eignvector will be $\xi= [-1    \quad \sqrt{\frac{\beta}{\alpha}}]^T$
     
     \item
-    \begin{figure}
-    	\centering
-    	\includegraphics[width=0.5\linewidth]{code/inv_iter}
-    	\caption{}
-    	\label{fig:inviter}
-    \end{figure}
-    \begin{figure}
-    	\centering
-    	\includegraphics[width=0.5\linewidth]{code/power_iter}
-    	\caption{}
-    	\label{fig:poweriter}
-    \end{figure}
+    
+%    	\begin{figure}[htbp]
+%    	\centering
+%    	\begin{minipage}[t]{0.48\textwidth}
+%    		\centering
+%    		\includegraphics[width=6cm]{code/inv_iter}
+%    	\end{minipage}
+%    	\begin{minipage}[t]{0.48\textwidth}
+%    		\centering
+%    		\includegraphics[width=6cm]{code/power_iter}
+%    	\end{minipage}
+%    \end{figure}
+
+
 set A as \[
 \bA = \begin{bmatrix}
 	0 & 4.6 \\
 	3.4 & 0
 \end{bmatrix}\,,\quad \text{ with }\alpha,\beta > 0\,.
 \]
-Both of the above methods can converge .You can see figure 1 and figure 2.
 
-Some analysis:\\
+power iteration can not converge. You can see figure 1.
+
+inverse iteration can converge. You can see and figure 2.
+
+Some analysis:
 \begin{enumerate}
 	\item $
 	v_{0}=\alpha_{1} x_{1}+\alpha_{2} x_{2}+\cdots+\alpha_{n} x_{n} \quad\left(\alpha_{1} \neq 0\right) \\$
@@ -563,15 +627,21 @@ Some analysis:\\
 	\end{bmatrix}
 	\]
 	$\lambda_1 = 2.23$ $\lambda_2 = -2.23$ 
-	\begin{figure}
+	\begin{figure}[htbp]
 		\centering
-		\includegraphics[width=0.5\linewidth]{code/power_iter_not}
-		\caption{}
-		\label{fig:poweriternot}
+		\begin{minipage}[t]{0.48\textwidth}
+			\centering
+			\includegraphics[width=6cm]{code/power_iter_not}
+		\end{minipage}
+		\begin{minipage}[t]{0.48\textwidth}
+			\centering
+			\includegraphics[width=6cm]{code/inv_iter_not}
+		\end{minipage}
 	\end{figure}
+	
 	Iteration cannot converge, as you can see in figure 3.
 	
-	\item For the inverse power method, mu should not be placed in the middle of the two eigenvalues.
+	\item For the inverse power method, $mu$ should not be placed in the middle of the two eigenvalues.
 	
 	set A as \[
 	\bA = \begin{bmatrix}
@@ -579,14 +649,9 @@ Some analysis:\\
 		1 & 0
 	\end{bmatrix}\,
 	\]
-	$\lambda_1 = 2.23$ $\lambda_2 = -2.23, mu = 0$  
+	$\lambda_1 = 2.23$ $\lambda_2 = -2.23, \mu = 0$  
 	Iteration cannot converge, as you can see in figure 4.
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.5\linewidth]{code/inv_iter_not}
-		\caption{}
-		\label{fig:inviternot}
-	\end{figure}
+
 	
 \end{enumerate}
 
@@ -746,7 +811,97 @@ Based on your observations, explain why the implicit QR iteration is indeed equi
 
 	All in all total cost is $n*(10 + n + c) + n*n.$  so is $\bigO(n^2)$
     \item[2.]
+    $$\mathbf{G_1^T}=\begin{bmatrix}
+    	\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} & 0 & 0 \\
+    	-\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} & 0 & 0 \\
+    	0 & 0 & 1 & 0 \\
+    	0 & 0 & 0 & 1 \\
+    \end{bmatrix}
+    \mathbf{G_1^TA^{(0)}}=\begin{bmatrix}
+    	\sqrt{5} &\frac{8}{\sqrt{5}} &\sqrt{5} &\frac{8}{\sqrt{5}} \\
+    	0 & -\frac{1}{\sqrt{5}} &-\sqrt{5} & -\frac{6}{\sqrt{5}} \\
+    	0 & 1 & 3 & 2\\
+    	0 & 0 & 2 &1
+    \end{bmatrix}
+    \mathbf{A^{(1)}}=\mathbf{G_1^TA^{(0)}G_1} =\begin{bmatrix}
+    	\frac{21}{5} & -\frac{2}{5} & \sqrt{5} & \frac{8}{\sqrt{5}}\\
+    	-\frac{2}{5} &-\frac{1}{5} &-\sqrt{5} & -\frac{6}{\sqrt{5}}\\
+    	\frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} &3 &2 \\
+    	0 & 0 & 2 & 1
+    \end{bmatrix}
+    $$
+    The "bulge" is $\frac{2}{\sqrt{5}}$.
+    $$\mathbf{G_2^T}=\begin{bmatrix}
+    	1 & 0 & 0 & 0 \\
+    	0& -\frac{1}{\sqrt{6}} & \frac{\sqrt{30}}{6} & 0 \\
+    	0 & -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}} & 0 \\
+    	0 & 0 & 0 & 1 \\
+    \end{bmatrix}
+    \mathbf{G_2^TA^{(1)}}=\begin{bmatrix}
+    	\frac{21}{5}&-\frac{2}{5} &\sqrt{5} &\frac{8}{\sqrt{5}} \\
+    	\frac{2\sqrt{6}}{5} & \frac{\sqrt{6}}{5} &\frac{2\sqrt{30}}{3} & \frac{8\sqrt{20}}{15} \\
+    	0 & 0 & \frac{6}{3} & \frac{2\sqrt{6}}{3}\\
+    	0 & 0 & 2 &1
+    \end{bmatrix}
+    \mathbf{A^{(2)}}=\mathbf{G_2^TA^{(1)}G_2} =\begin{bmatrix}
+    	\frac{21}{5} & \frac{9\sqrt{6}}{10} & -\frac{\sqrt{30}}{10} & \frac{8}{\sqrt{5}}\\
+    	\frac{2\sqrt{6}}{5} &\frac{47}{15} &-\frac{13\sqrt{5}}{15} & \frac{8\sqrt{30}}{15}\\
+    	0 & \frac{\sqrt{5}}{3} &-\frac{1}{3}&\frac{2\sqrt{6}}{3} \\
+    	0 & \frac{\sqrt{30}}{3}& -\frac{\sqrt{6}}{3} & 1
+    \end{bmatrix}
+    $$
+    The "bulge" is $\frac{\sqrt{30}}{3}$.
+    $$\mathbf{G_3^T}=\begin{bmatrix}
+    	1 & 0 & 0 & 0 \\
+    	0& 1 & 0 & 0 \\
+    	0 &0 & -\frac{1}{\sqrt{7}} & -\frac{\sqrt{42}}{7} \\
+    	0 & 0 & \frac{\sqrt{42}}{7} & -\frac{1}{\sqrt{7}} \\
+    \end{bmatrix}
+    \mathbf{G_3^TA^{(2)}}=\begin{bmatrix}
+    	\frac{21}{5}&\frac{9\sqrt{6}}{10} &\frac{30}{10} &\frac{8}{\sqrt{5}} \\
+    	\frac{2\sqrt{6}}{5} & \frac{47}{15} &-\frac{13\sqrt{5}}{15} & \frac{8\sqrt{30}}{15} \\
+    	0 & -\frac{\sqrt{35}}{3} & \frac{7}{3} & \frac{5\sqrt{42}}{21}\\
+    	0 & 0 & 0 &\frac{3\sqrt{7}}{7}
+    \end{bmatrix}
+    \mathbf{A^{(3)}}=\begin{bmatrix}
+    	\frac{21}{5} & \frac{9\sqrt{6}}{10} & -\frac{3\sqrt{15}}{\sqrt{14}} & \frac{11}{\sqrt{35}}\\
+    	\frac{2\sqrt{6}}{5} &\frac{47}{15} &-\frac{\sqrt{35}}{3} & \frac{\sqrt{42}}{\sqrt{5}}\\
+    	0 & -\frac{\sqrt{35}}{3} &\frac{23}{21}&\frac{4\sqrt{6}}{7} \\
+    	0 & 0 & -\frac{3\sqrt{6}}{7} & -\frac{3}{7}
+    \end{bmatrix}
+    $$
+    Now, the matrix $\mathbf{A^{(3)}}$ is the Hessenberg form.
+    According to the computational process, we have 
+    $$\mathbf{A^{(3)}}=\mathbf{G_1^TG_2^TG_3^TA^{(0)}G_1G_2G_3}=\mathbf{(G_1G_2G_3)^TA^{(0)}(G_1G_2G_3)}$$
+    And the $\mathbf{A^{0}}$ corresponding to  $\mathbf{A^{(k-1)}}$ of  Algorithm 5, the $\mathbf{A^{3}}$ corresponding to
+    $\mathbf{A^{(k)}}$ of  Algorithm 5.\\
+    $\mathbf{G_1^TG_2^TG_3^TA^{(0)}}$  corresponding to $\mathbf{R^{(k)}}$ of Algorithm 5.
     
+    By definition of Hessenberg matrix, $\mathbf{A}^{(3)}$ is Hessenberg matrix. preserved Hessenberg form.
+    I will show the implicit QR iteration is equivalent to the Algorithm $5 .$ In Algorithm 5 ,
+    $$
+    \left\{\begin{array}{l}
+    	\left(\mathbf{G}_{n-1}^{H} \mathbf{G}_{m-2}^{H} \cdots \mathbf{G}_{1}^{H}\right) \mathbf{A}^{(k-1)}=\left(\mathbf{Q}^{(k)}\right)^{H} \mathbf{A}^{(k-1)}=\mathbf{R}^{(k)} \\
+    	\mathbf{A}^{(k)}=\mathbf{R}^{(k)} \mathbf{Q}^{(k)}=\mathbf{R}^{(k)} \mathbf{G}_{1} \cdots \mathbf{G}_{n-1}
+    \end{array}\right.
+    $$
+    
+    We can rewrite it as
+    $$
+    \mathbf{A}^{(k)}=\left(\mathbf{G}_{n-1}^{H} \mathbf{G}_{n-2}^{H} \cdots \mathbf{G}_{1}^{H}\right) \mathbf{A}^{(k-1)} \mathbf{G}_{1} \cdots \mathbf{G}_{n-1}
+    $$
+    
+    In implicit QR iteration, we have
+    $$
+    \begin{array}{l}
+    	\widetilde{\mathbf{A}}^{(1)}=\mathbf{G}_{1}^{H} \mathbf{A}^{(k-1)} \mathbf{G}_{1} \\
+    	\widetilde{\mathbf{A}}^{(2)}=\mathbf{G}_{2}^{H} \widetilde{\mathbf{A}}^{(1)} \mathbf{G}_{2}\\
+    	...
+    \end{array}
+    $$
+    $$
+    \widetilde{\mathbf{A}}^{(n-1)}=\mathbf{G}_{n-1}^{H} \widetilde{\mathbf{A}}^{(n-2)} \mathbf{G}_{n-1}
+    $$
 \end{enumerate}
 
 \end{document}

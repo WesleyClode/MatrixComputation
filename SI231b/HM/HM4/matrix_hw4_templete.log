@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.25)  20 NOV 2020 11:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.27)  22 NOV 2020 01:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -762,64 +762,70 @@ our codes into \T1/phv/m/n/10 your_student_id+hw4_code.zip
  []
 
 [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4] [5]
-
-Package amsmath Warning: Foreign command \atop;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 369.
-
-[6
-
-] [7] [8]
-<code/inv_iter.png, id=130, 562.1pt x 421.575pt>
-File: code/inv_iter.png Graphic file (type png)
-<use code/inv_iter.png>
-Package pdftex.def Info: code/inv_iter.png  used on input line 523.
-(pdftex.def)             Requested size: 236.15787pt x 177.11818pt.
-<code/power_iter.png, id=131, 562.1pt x 421.575pt>
-File: code/power_iter.png Graphic file (type png)
-<use code/power_iter.png>
-Package pdftex.def Info: code/power_iter.png  used on input line 529.
-(pdftex.def)             Requested size: 236.15787pt x 177.11818pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 541--543
-
- []
-
-[9 <./code/inv_iter.png (PNG copy)> <./code/power_iter.png (PNG copy)>]
-<code/power_iter_not.png, id=140, 562.1pt x 421.575pt>
-File: code/power_iter_not.png Graphic file (type png)
-<use code/power_iter_not.png>
-Package pdftex.def Info: code/power_iter_not.png  used on input line 568.
-(pdftex.def)             Requested size: 236.15787pt x 177.11818pt.
-<code/inv_iter_not.png, id=141, 562.1pt x 421.575pt>
-File: code/inv_iter_not.png Graphic file (type png)
-<use code/inv_iter_not.png>
-Package pdftex.def Info: code/inv_iter_not.png  used on input line 586.
-(pdftex.def)             Requested size: 236.15787pt x 177.11818pt.
-
-[10 <./code/power_iter_not.png (PNG copy)>] [11 <./code/inv_iter_not.png (PNG c
-opy)>] [12] [13
+[2] [3] [4] [5] [6
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 752.
- [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 752.
+
+LaTeX Warning: Command \L invalid in math mode on input line 469.
+
+Missing character: There is no Š in font cmr10!
+[7]
+Overfull \hbox (4.3982pt too wide) in paragraph at lines 486--490
+[]\T1/ptm/m/n/10 If $\OML/cmm/m/it/10 ^^U[] \OT1/cmr/m/n/10 = 0\OML/cmm/m/it/10
+ ;$ \T1/ptm/m/n/10 then there ex-ists a $\OML/cmm/m/it/10 n \OMS/cmsy/m/n/10 ^^
+@ \OML/cmm/m/it/10 k \OT1/cmr/m/n/10 + 1$ \T1/ptm/m/n/10 di-men-sional sub-spac
+e $\OMS/cmsy/m/n/10 S$ \T1/ptm/m/n/10 such that $\OMS/cmsy/m/n/10 8\OT1/cmr/bx/
+n/10 x \OMS/cmsy/m/n/10 2 S\OML/cmm/m/it/10 ;$ \T1/ptm/m/n/10 we have $[][] [][
+] \OT1/cmr/m/n/10 =$
+ []
+
+[8] [9]
+<code/power_iter_not.png, id=134, 562.1pt x 421.575pt>
+File: code/power_iter_not.png Graphic file (type png)
+<use code/power_iter_not.png>
+Package pdftex.def Info: code/power_iter_not.png  used on input line 634.
+(pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
+<code/inv_iter_not.png, id=135, 562.1pt x 421.575pt>
+File: code/inv_iter_not.png Graphic file (type png)
+<use code/inv_iter_not.png>
+Package pdftex.def Info: code/inv_iter_not.png  used on input line 638.
+(pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
+ [10 <./code/power_iter_not.png (PNG copy)> <./code/inv_iter_not.png (PNG copy)
+>] [11] [12] [13
+
+]
+Overfull \hbox (49.9169pt too wide) detected at line 832
+[] \OT1/cmr/m/n/10 = [] [] = [] [] = [] = []
+ []
+
+
+Overfull \hbox (68.08926pt too wide) detected at line 852
+[] \OT1/cmr/m/n/10 = [] [] = [] [] = [] = []
+ []
+
+[14]
+Overfull \hbox (30.99796pt too wide) detected at line 872
+[] \OT1/cmr/m/n/10 = [] [] = [] [] = []
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 907.
+[15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 907.
  (./matrix_hw4_templete.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 752.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 752.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 907.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 907.
 Package rerunfilecheck Info: File `matrix_hw4_templete.out' has not changed.
 (rerunfilecheck)             Checksum: CDD800B913447159CE247A95EDC1AFF2;379.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 752.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 907.
  ) 
 Here is how much of TeX's memory you used:
- 12490 strings out of 480608
- 191528 string characters out of 5903629
- 494558 words of memory out of 5000000
- 28016 multiletter control sequences out of 15000+600000
+ 12466 strings out of 480608
+ 191122 string characters out of 5903630
+ 503468 words of memory out of 5000000
+ 27997 multiletter control sequences out of 15000+600000
  646595 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,17n,37p,682b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,17n,37p,682b,532s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texl
@@ -844,10 +850,10 @@ st/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts
 urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/
 utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pf
 b></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on matrix_hw4_templete.pdf (14 pages, 334925 bytes).
+Output written on matrix_hw4_templete.pdf (15 pages, 315362 bytes).
 PDF statistics:
- 304 PDF objects out of 1000 (max. 8388607)
- 257 compressed objects within 3 object streams
- 100 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 302 PDF objects out of 1000 (max. 8388607)
+ 256 compressed objects within 3 object streams
+ 97 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
